@@ -1,13 +1,15 @@
 package com.cophea;
 
 import javafx.application.Application;
+//import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+//import javafx.scene.control.Label;
+//import javafx.scene.control.RadioButton;
 
-
-import java.io.IOException;
+//import java.io.IOException;
 
 
 
@@ -22,12 +24,15 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         //FXMLLoader loader = new FXMLLoader();
         Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
+		ScheduleController f = new ScheduleController();
+		
+		
+		//f.t1();
 		Scene scene = new Scene(parent);
-		stage.setTitle("test");
+		stage.setTitle("C");
 		stage.setScene(scene);
 		stage.show();
-
-
+		
     }
 
     // SEND AN EMAIL TO CONFIRM APPOINT
@@ -42,7 +47,7 @@ public class App extends Application {
 	//changing schedule (cancelling apointments?)
 	//pick weekly schedule not specific dates
 	public static void main(String[] args) {
-        //scheduleTesting();
+       // scheduleTesting();
         launch(args);
 		
 	}

@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cophea.ScheduleController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="122.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="119.0" />
@@ -36,7 +35,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label id="lblTitle" text="Showing Appointments for __________" textAlignment="CENTER" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label id="lblTitle" fx:id="lblTitle" text="Showing Appointments for __________" textAlignment="CENTER" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
@@ -86,17 +85,17 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Font size="16.0" />
          </font>
       </Label>
-      <Button id="btnContinue" mnemonicParsing="false" text="Continue" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="11">
+      <Button id="btnContinue" fx:id="btnContinue" mnemonicParsing="false" text="Continue" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="11">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button id="btnGoBack" mnemonicParsing="false" text="Go Back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+      <Button id="btnGoBack" fx:id="btnGoBack" mnemonicParsing="false" text="Go Back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label id="lblWeek" text="Week of _____" textAlignment="CENTER" GridPane.halignment="CENTER">
+      <Label id="lblWeek" fx:id="lblWeek" text="Week of _____" textAlignment="CENTER" GridPane.halignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -126,7 +125,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Font size="18.0" />
          </font>
       </Label>
-      <RadioButton id="btnMon9AM" mnemonicParsing="false" text="Available" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <RadioButton id="btnMon9AM" fx:id="btnMon9AM" mnemonicParsing="false" text="Available" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
@@ -137,7 +136,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <ToggleGroup fx:id="timeSlots" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton id="btnMon10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <RadioButton id="btnMon10AM" fx:id="btnMon10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
@@ -145,7 +144,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnMon11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <RadioButton id="btnMon11AM" fx:id="btnMon11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -153,7 +152,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnMon12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <RadioButton id="btnMon12PM" fx:id="btnMon12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
@@ -161,7 +160,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnMon1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <RadioButton id="btnMon1PM" fx:id="btnMon1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="14.0" />
          </font>
@@ -169,7 +168,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnMon2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <RadioButton id="btnMon2PM" fx:id="btnMon2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <font>
             <Font size="14.0" />
          </font>
@@ -177,7 +176,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <RadioButton id="btnTues9AM" fx:id="btnTues9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
@@ -185,7 +184,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <RadioButton id="btnTues10AM" fx:id="btnTues10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
@@ -193,7 +192,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnMon3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <RadioButton id="btnMon3PM" fx:id="btnMon3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <font>
             <Font size="14.0" />
          </font>
@@ -201,7 +200,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnMon4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="9">
+      <RadioButton id="btnMon4PM" fx:id="btnMon4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font>
@@ -209,7 +208,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnMon5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="10">
+      <RadioButton id="btnMon5PM" fx:id="btnMon5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <font>
             <Font size="14.0" />
          </font>
@@ -217,7 +216,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="4">
+      <RadioButton id="btnTues11AM" fx:id="btnTues11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -225,7 +224,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="5">
+      <RadioButton id="btnTues12PM" fx:id="btnTues12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
@@ -233,7 +232,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="6">
+      <RadioButton id="btnTues1PM" fx:id="btnTues1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <font>
             <Font size="14.0" />
          </font>
@@ -241,7 +240,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="7">
+      <RadioButton id="btnTues2PM" fx:id="btnTues2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="7">
          <font>
             <Font size="14.0" />
          </font>
@@ -249,7 +248,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="8">
+      <RadioButton id="btnTues3PM" fx:id="btnTues3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="8">
          <font>
             <Font size="14.0" />
          </font>
@@ -257,7 +256,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="9">
+      <RadioButton id="btnTues4PM" fx:id="btnTues4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font>
@@ -265,7 +264,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnTues5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="10">
+      <RadioButton id="btnTues5PM" fx:id="btnTues5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="10">
          <font>
             <Font size="14.0" />
          </font>
@@ -273,7 +272,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="2">
+      <RadioButton id="btnWed9AM" fx:id="btnWed9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
@@ -281,7 +280,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="3">
+      <RadioButton id="btnWed10AM" fx:id="btnWed10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
@@ -289,7 +288,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="4">
+      <RadioButton id="btnWed11AM" fx:id="btnWed11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -297,7 +296,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="5">
+      <RadioButton id="btnWed12PM" fx:id="btnWed12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
@@ -305,7 +304,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="6">
+      <RadioButton id="btnWed1PM" fx:id="btnWed1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="6">
          <font>
             <Font size="14.0" />
          </font>
@@ -313,7 +312,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="2">
+      <RadioButton id="btnThurs9AM" fx:id="btnThurs9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
@@ -321,7 +320,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="2">
+      <RadioButton id="btnFri9AM" fx:id="btnFri9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
@@ -329,7 +328,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="3">
+      <RadioButton id="btnThurs10AM" fx:id="btnThurs10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
@@ -337,7 +336,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="3">
+      <RadioButton id="btnFri10AM" fx:id="btnFri10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
@@ -345,7 +344,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="4">
+      <RadioButton id="btnThurs11AM" fx:id="btnThurs11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -353,7 +352,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="4">
+      <RadioButton id="btnFri11AM" fx:id="btnFri11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -361,7 +360,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="5">
+      <RadioButton id="btnThurs12PM" fx:id="btnThurs12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
@@ -369,7 +368,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="5">
+      <RadioButton id="btnFri12PM" fx:id="btnFri12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
@@ -377,7 +376,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="7">
+      <RadioButton id="btnWed2PM" fx:id="btnWed2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="7">
          <font>
             <Font size="14.0" />
          </font>
@@ -385,7 +384,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="8">
+      <RadioButton id="btnWed3PM" fx:id="btnWed3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="8">
          <font>
             <Font size="14.0" />
          </font>
@@ -393,7 +392,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="9">
+      <RadioButton id="btnWed4PM" fx:id="btnWed4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font>
@@ -401,7 +400,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnWed5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="10">
+      <RadioButton id="btnWed5PM" fx:id="btnWed5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="10">
          <font>
             <Font size="14.0" />
          </font>
@@ -409,7 +408,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="6">
+      <RadioButton id="btnThurs1PM" fx:id="btnThurs1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="6">
          <font>
             <Font size="14.0" />
          </font>
@@ -417,7 +416,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="6">
+      <RadioButton id="btnFri1PM" fx:id="btnFri1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="6">
          <font>
             <Font size="14.0" />
          </font>
@@ -425,7 +424,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="7">
+      <RadioButton id="btnThurs2PM" fx:id="btnThurs2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="7">
          <font>
             <Font size="14.0" />
          </font>
@@ -433,7 +432,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="7">
+      <RadioButton id="btnFri2PM" fx:id="btnFri2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="7">
          <font>
             <Font size="14.0" />
          </font>
@@ -441,7 +440,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="8">
+      <RadioButton id="btnThurs3PM" fx:id="btnThurs3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="8">
          <font>
             <Font size="14.0" />
          </font>
@@ -449,7 +448,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="8">
+      <RadioButton id="btnFri3PM" fx:id="btnFri3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="8">
          <font>
             <Font size="14.0" />
          </font>
@@ -457,7 +456,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="9">
+      <RadioButton id="btnThurs4PM" fx:id="btnThurs4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font>
@@ -465,7 +464,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="9">
+      <RadioButton id="btnFri4PM" fx:id="btnFri4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font>
@@ -473,7 +472,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnThurs5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="10">
+      <RadioButton id="btnThurs5PM" fx:id="btnThurs5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="10">
          <font>
             <Font size="14.0" />
          </font>
@@ -481,7 +480,7 @@ minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.c
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="btnFri5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="10">
+      <RadioButton id="btnFri5PM" fx:id="btnFri5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="10">
          <font>
             <Font size="14.0" />
          </font>
