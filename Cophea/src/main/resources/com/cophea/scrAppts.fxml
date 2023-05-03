@@ -144,7 +144,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="opt-Mon11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <RadioButton id="opt-Mon11AM" fx:id="optMon11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -280,7 +280,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="opt-Wed10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="3">
+      <RadioButton id="opt-Wed10AM" fx:id="optWed10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
@@ -296,7 +296,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="opt-Wed12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="5">
+      <RadioButton id="opt-Wed12PM" fx:id="optWed12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
@@ -352,7 +352,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="opt-Fri11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="4">
+      <RadioButton id="opt-Fri11AM" fx:id="optFri11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -400,7 +400,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="opt-Wed5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="10">
+      <RadioButton id="opt-Wed5PM" fx:id="optWed5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="10">
          <font>
             <Font size="14.0" />
          </font>

@@ -67,7 +67,7 @@ public class App extends Application {
 				dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
 			}
 		}
-		sched.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
+		//sched.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
 	}
 
 	public static void scheduleTesting(){

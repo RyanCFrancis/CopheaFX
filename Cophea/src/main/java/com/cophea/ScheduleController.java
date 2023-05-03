@@ -138,13 +138,13 @@ public class ScheduleController  {
     @FXML
     public void initialize(){
         
-        RadioButton[] buttons = new RadioButton[]{
-        optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
-        optTues9AM,optTues10AM,optTues11AM,optTues12PM,optTues1PM,optTues2PM,optTues3PM,optTues4PM,optTues5PM,
-        optWed9AM,optWed10AM,optWed11AM,optWed12PM,optWed1PM,optWed2PM,optWed3PM,optWed4PM,optWed5PM,
-        optThurs9AM,optThurs10AM,optThurs11AM,optThurs12PM,optThurs1PM,optThurs2PM,optThurs3PM,optThurs4PM,optThurs5PM,
-        optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
-        };
+        // RadioButton[] buttons = new RadioButton[]{
+        // optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
+        // optTues9AM,optTues10AM,optTues11AM,optTues12PM,optTues1PM,optTues2PM,optTues3PM,optTues4PM,optTues5PM,
+        // optWed9AM,optWed10AM,optWed11AM,optWed12PM,optWed1PM,optWed2PM,optWed3PM,optWed4PM,optWed5PM,
+        // optThurs9AM,optThurs10AM,optThurs11AM,optThurs12PM,optThurs1PM,optThurs2PM,optThurs3PM,optThurs4PM,optThurs5PM,
+        // optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
+        // };
 
         
         //System.out.println(buttons[10]);
@@ -161,22 +161,26 @@ public class ScheduleController  {
             };
 
         //System.out.println(optMon9AM.getText());
-        optMon9AM.setText("lol");
-        buttons[10].setText("hmm");
+        //optMon9AM.setText("lol");
+        //buttons[10].setText("hmm");
 
 
         Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		Patient p1 = new Patient("Ryan","F","user","pass");
 		for (int i=1;i<20;i++){
 			TimeSlot t = new TimeSlot(2023, 1, i, 9);
+            
 			//if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
 				dave.addSlot(t);
+                t = new TimeSlot(2023, 1, i, 10);
+                dave.addSlot(t);
 			//}
 		}
 		for (int i = 0; i < dave.getSlots().size(); i++) {
-			if (i%2==0){
+			//if (i%2==0){
 				dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
-			}
+                
+			//}
 		}
 		this.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
         
@@ -187,6 +191,7 @@ public class ScheduleController  {
 
     //timeslot should be a monday at 9am
     public void updateSchedule(Employee e,TimeSlot tempTS) {
+      
         buttons = new RadioButton[]{
             optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
             optTues9AM,optTues10AM,optTues11AM,optTues12PM,optTues1PM,optTues2PM,optTues3PM,optTues4PM,optTues5PM,
@@ -195,8 +200,10 @@ public class ScheduleController  {
             optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
             };
 
+        //for (int z=0;z<buttons.length;z++){System.out.println(buttons[z]);}
+
         //System.out.println();
-        System.out.println("is this printing");
+        //System.out.println("is this printing");
         //optMon9AM.setText("lol");
         //buttons[0].setText("xd");
         //System.out.println(optMon9AM.getText());
@@ -207,27 +214,35 @@ public class ScheduleController  {
         }
         ArrayList<Appointment> activeApps = e.getAppointments();
         ArrayList<TimeSlot> workingHours = e.getSlots();
-        
+        //System.out.println(workingHours);
         int i=0;
         while (i<45){
+            //loop through working hours
             for (int q=0;q<workingHours.size();q++){
-                System.out.println();
-                System.out.println(tempTS);
-                System.out.println(workingHours.get(q));
-                System.out.println("---");
+                // System.out.println();
+                // System.out.println(tempTS);
+                // System.out.println(workingHours.get(q));
+                // System.out.println("---");
                 if (tempTS.equals(workingHours.get(q))){
                     System.out.println("lol");
-                    buttons[i].setText("wow");
+                    buttons[i].setText("avail");
                 }
-                //System.out.println(q);
+                //System.out.println(workingHours.get(q));
             }
+            //loop through busy appointments
+            for (int q=0;q<activeApps.size();q++){
+                if (activeApps.get(q).getSlot().equals(tempTS)){
+                   // buttons[i].setText("TAKEN");
+                }
+            }
+
             if (i % 9 == 0){
                 tempTS = tempTS.incDay();
             }
             else {
                 tempTS = tempTS.incHour();
             }
-            System.out.println(tempTS);
+           // System.out.println(tempTS);
             i++;
            
         }
