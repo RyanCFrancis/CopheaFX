@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
+minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="122.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="119.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="119.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="119.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label id="lblTitle" text="Showing Appointments for __________" textAlignment="CENTER" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label id="lbl9AM" text="9:00 AM" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl10AM" text="10:00 AM" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl11AM" text="11:00 AM" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl12PM" text="12:00 PM" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl1PM" text="1:00 PM" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl2PM" text="2:00 PM" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl3PM" text="3:00 PM" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl4PM" text="4:00 PM" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="lbl5PM" text="5:00 PM" GridPane.halignment="CENTER" GridPane.rowIndex="10">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button id="btnContinue" mnemonicParsing="false" text="Continue" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="11">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button id="btnGoBack" mnemonicParsing="false" text="Go Back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label id="lblWeek" text="Week of _____" textAlignment="CENTER" GridPane.halignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="lblMonday" text="Monday" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label id="lblTuesday" text="Tuesday" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label id="lblWednesday" text="Wednesday" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label id="lblThursday" text="Thursday" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label id="lblFriday" text="Friday" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <RadioButton id="btnMon9AM" mnemonicParsing="false" text="Available" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+         <toggleGroup>
+            <ToggleGroup fx:id="timeSlots" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton id="btnMon10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnMon11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnMon12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnMon1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnMon2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnMon3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="8">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnMon4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnMon5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="1" GridPane.rowIndex="10">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="6">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="8">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="9">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnTues5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="10">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="6">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri10AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri11AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri12PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="8">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="9">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnWed5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="3" GridPane.rowIndex="10">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="6">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="6">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri2PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="8">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri3PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="8">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="9">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri4PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="9">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnThurs5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="10">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="btnFri5PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="5" GridPane.rowIndex="10">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="8.0" />
+         </padding>
+      </RadioButton>
+      <Group GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   </children>
+</GridPane>

@@ -1,0 +1,55 @@
+package com.cophea;
+
+import java.util.ArrayList;
+
+public class Employee extends Person {
+	//examples are "Doctor","Nurse","Surgeon"
+	private String role;
+	private ArrayList<String> conditions;
+	//all timeslots the employee is working, whether they are occupied by an appointment or not
+	private ArrayList<TimeSlot> workSlots;
+	
+	public Employee(String f,String l, String login, String password,  String role) {
+		super("0",f,l, login, password,"go@gmail.com", false);
+		this.workSlots = new ArrayList<TimeSlot>();
+		this.conditions = new ArrayList<String>();
+		this.role = role;
+	}
+	public void addCondition(String c){
+		this.conditions.add(c);
+	}
+	public ArrayList<String> getConditions(){
+		return this.conditions;
+	}
+
+	public void addSlot(TimeSlot ts) {
+		//change the return to throwing an error or something later
+		if (workSlots.contains(ts)) {
+			System.out.println("Error the thing already exists");
+			return;
+		}
+		workSlots.add(ts);
+	}
+	public void removeSlot(TimeSlot ts) {
+		if (workSlots.contains(ts)) {workSlots.remove(ts);return;}
+		
+		//spit out an error or something
+		System.out.println("Error that doesnt exist");
+	}
+
+	public ArrayList<TimeSlot> getSlots(){
+		return workSlots;
+	}
+	
+	public String getRole(){
+		return this.role;
+	}
+
+	public void setRole(String r){
+		this.role = r;
+	}
+	
+	
+	
+
+}
