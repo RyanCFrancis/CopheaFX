@@ -24,7 +24,8 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         //FXMLLoader loader = new FXMLLoader();
         Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
-		ScheduleController f = new ScheduleController();
+		//ScheduleController sched = new ScheduleController();
+		
 		
 		
 		//f.t1();
@@ -47,9 +48,25 @@ public class App extends Application {
 	//changing schedule (cancelling apointments?)
 	//pick weekly schedule not specific dates
 	public static void main(String[] args) {
-       // scheduleTesting();
-        launch(args);
+		ScheduleController sched = new ScheduleController();
 		
+       	//scheduleTesting();
+        launch(args);
+
+		Employee dave = new Employee("dave","silverman","login","pw","Doctor");
+		Patient p1 = new Patient("Ryan","F","user","pass");
+		for (int i=1;i<20;i++){
+			TimeSlot t = new TimeSlot(2023, 1, i, 14);
+			if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
+				dave.addSlot(t);
+			}
+		}
+		// for (int i = 0; i < dave.getSlots().size(); i++) {
+		// 	if (i%2==0){
+		// 		dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
+		// 	}
+		// }
+		sched.updateSchedule(dave,new TimeSlot(2023,1,2,0));
 	}
 
 	public static void scheduleTesting(){

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Employee extends Person {
 	//examples are "Doctor","Nurse","Surgeon"
 	private String role;
+	//coniditions they treat
 	private ArrayList<String> conditions;
 	//all timeslots the employee is working, whether they are occupied by an appointment or not
 	private ArrayList<TimeSlot> workSlots;

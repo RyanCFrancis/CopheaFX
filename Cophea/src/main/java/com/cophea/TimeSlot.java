@@ -1,5 +1,6 @@
 package com.cophea;
 
+
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
@@ -20,6 +21,12 @@ public class TimeSlot implements Comparable<TimeSlot> {
 	public TimeSlot(int year,int mon,int day,int hstart) {
 		start = OffsetDateTime.of(year,mon,day,hstart,0,0,0,ZoneOffset.ofHours(-5));
 		end = OffsetDateTime.of(year,mon,day,hstart+1,0,0,0,ZoneOffset.ofHours(-5));
+	}
+
+	public TimeSlot(OffsetDateTime ODT){
+		start = ODT;
+		end = ODT.plusHours(1);
+
 	}
 	
 	//returns duration in hours //placeholder
@@ -54,6 +61,14 @@ public class TimeSlot implements Comparable<TimeSlot> {
 		if (val) {return -1;}
 		//if the first timeslot occurs AFTER the 2nd, returns 1
 		return 1;
+	}
+
+	public TimeSlot incHour(){
+		return new TimeSlot(this.start.getYear(),this.start.getMonthValue(),this.start.getDayOfMonth(),this.start.getHour());
+	}
+
+	public TimeSlot incDay(){
+		return new TimeSlot(this.start.plusHours(16));
 	}
 	
 	@Override
