@@ -64,7 +64,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
 	}
 
 	public TimeSlot incHour(){
-		return new TimeSlot(this.start.getYear(),this.start.getMonthValue(),this.start.getDayOfMonth(),this.start.getHour());
+		return new TimeSlot(this.start.plusHours(1));
 	}
 
 	public TimeSlot incDay(){

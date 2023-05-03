@@ -24,7 +24,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         //FXMLLoader loader = new FXMLLoader();
         Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
-		//ScheduleController sched = new ScheduleController();
+		
 		
 		
 		
@@ -50,6 +50,7 @@ public class App extends Application {
 	public static void main(String[] args) {
 		ScheduleController sched = new ScheduleController();
 		
+		
        	//scheduleTesting();
         launch(args);
 
@@ -61,12 +62,12 @@ public class App extends Application {
 				dave.addSlot(t);
 			}
 		}
-		// for (int i = 0; i < dave.getSlots().size(); i++) {
-		// 	if (i%2==0){
-		// 		dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
-		// 	}
-		// }
-		sched.updateSchedule(dave,new TimeSlot(2023,1,2,0));
+		for (int i = 0; i < dave.getSlots().size(); i++) {
+			if (i%2==0){
+				dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
+			}
+		}
+		sched.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
 	}
 
 	public static void scheduleTesting(){

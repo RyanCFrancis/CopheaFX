@@ -125,6 +125,7 @@
             <Font size="18.0" />
          </font>
       </Label>
+      
       <RadioButton id="btnMon9AM" fx:id="btnMon9AM" mnemonicParsing="false" text="Available" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
@@ -488,6 +489,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
+      
       <Group GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
 </GridPane>
