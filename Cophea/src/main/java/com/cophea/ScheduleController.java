@@ -167,13 +167,13 @@ public class ScheduleController  {
 
         Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		Patient p1 = new Patient("Ryan","F","user","pass");
-		for (int i=1;i<20;i++){
+		for (int i=1;i<8;i++){
 			TimeSlot t = new TimeSlot(2023, 1, i, 9);
             
 			//if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
 				dave.addSlot(t);
-                t = new TimeSlot(2023, 1, i, 10);
-                dave.addSlot(t);
+                TimeSlot t2 = new TimeSlot(2023, 1, i, 15);
+                dave.addSlot(t2);
 			//}
 		}
 		for (int i = 0; i < dave.getSlots().size(); i++) {
@@ -212,6 +212,9 @@ public class ScheduleController  {
         if (tempTS.getStart().getDayOfWeek() != DayOfWeek.MONDAY){
             System.out.println("NOT A MONDAY");System.exit(59);
         }
+        if (tempTS.getStart().getHour() != 9){
+            System.out.println("NOT A 9AM");System.exit(59);
+        }
         ArrayList<Appointment> activeApps = e.getAppointments();
         ArrayList<TimeSlot> workingHours = e.getSlots();
         //System.out.println(workingHours);
@@ -236,13 +239,16 @@ public class ScheduleController  {
                 }
             }
 
-            if (i % 9 == 0){
+            if (tempTS.getStart().getHour() == 17){
                 tempTS = tempTS.incDay();
+                System.out.println("day inc");
             }
             else {
                 tempTS = tempTS.incHour();
+                System.out.println("hour inc");
             }
-           // System.out.println(tempTS);
+            // System.out.println("temp ts value:");
+            // System.out.println(tempTS);
             i++;
            
         }

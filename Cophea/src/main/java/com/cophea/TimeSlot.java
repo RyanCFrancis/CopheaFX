@@ -82,6 +82,28 @@ public class TimeSlot implements Comparable<TimeSlot> {
 		//temporary
 		return this.getStart().toString();
 	}
+
+
+
+	//12am = 0
+	//1am = 1
+	//2am = 2
+	//3am = 3
+	//4am = 4
+	//5am = 5
+	//6am = 6
+	//7am = 7
+	//8am = 8
+	//9am = 9
+	//10am = 10
+	//11am = 11
+	//12pm = 12
+	//1pm = 13
+	//2pm = 14
+	//3pm = 15
+	//4ppm = 16
+	//5pm = 17
+	
 }
 
 	
