@@ -30,99 +30,99 @@ public class ScheduleController  {
     ToggleGroup timeSlots;
 
     @FXML
-    RadioButton btnMon9AM;
+    RadioButton optMon9AM;
     @FXML
-    RadioButton btnMon10AM;
+    RadioButton optMon10AM;
     @FXML
-    RadioButton btnMon11AM;
+    RadioButton optMon11AM;
     @FXML
-    RadioButton btnMon12PM;
+    RadioButton optMon12PM;
     @FXML
-    RadioButton btnMon1PM;
+    RadioButton optMon1PM;
     @FXML
-    RadioButton btnMon2PM;
+    RadioButton optMon2PM;
     @FXML
-    RadioButton btnMon3PM;
+    RadioButton optMon3PM;
     @FXML
-    RadioButton btnMon4PM;
+    RadioButton optMon4PM;
     @FXML
-    RadioButton btnMon5PM;
+    RadioButton optMon5PM;
 
     @FXML
-    RadioButton btnTues9AM;
+    RadioButton optTues9AM;
     @FXML
-    RadioButton btnTues10AM;
+    RadioButton optTues10AM;
     @FXML
-    RadioButton btnTues11AM;
+    RadioButton optTues11AM;
     @FXML
-    RadioButton btnTues12PM;
+    RadioButton optTues12PM;
     @FXML
-    RadioButton btnTues1PM;
+    RadioButton optTues1PM;
     @FXML
-    RadioButton btnTues2PM;
+    RadioButton optTues2PM;
     @FXML
-    RadioButton btnTues3PM;
+    RadioButton optTues3PM;
     @FXML
-    RadioButton btnTues4PM;
+    RadioButton optTues4PM;
     @FXML
-    RadioButton btnTues5PM;
+    RadioButton optTues5PM;
 
     @FXML
-    RadioButton btnWed9AM;
+    RadioButton optWed9AM;
     @FXML
-    RadioButton btnWed10AM;
+    RadioButton optWed10AM;
     @FXML
-    RadioButton btnWed11AM;
+    RadioButton optWed11AM;
     @FXML
-    RadioButton btnWed12PM;
+    RadioButton optWed12PM;
     @FXML
-    RadioButton btnWed1PM;
+    RadioButton optWed1PM;
     @FXML
-    RadioButton btnWed2PM;
+    RadioButton optWed2PM;
     @FXML
-    RadioButton btnWed3PM;
+    RadioButton optWed3PM;
     @FXML
-    RadioButton btnWed4PM;
+    RadioButton optWed4PM;
     @FXML
-    RadioButton btnWed5PM;
+    RadioButton optWed5PM;
 
     @FXML
-    RadioButton btnThurs9AM;
+    RadioButton optThurs9AM;
     @FXML
-    RadioButton btnThurs10AM;
+    RadioButton optThurs10AM;
     @FXML
-    RadioButton btnThurs11AM;
+    RadioButton optThurs11AM;
     @FXML
-    RadioButton btnThurs12PM;
+    RadioButton optThurs12PM;
     @FXML
-    RadioButton btnThurs1PM;
+    RadioButton optThurs1PM;
     @FXML
-    RadioButton btnThurs2PM;
+    RadioButton optThurs2PM;
     @FXML
-    RadioButton btnThurs3PM;
+    RadioButton optThurs3PM;
     @FXML
-    RadioButton btnThurs4PM;
+    RadioButton optThurs4PM;
     @FXML
-    RadioButton btnThurs5PM;
+    RadioButton optThurs5PM;
 
     @FXML
-    RadioButton btnFri9AM;
+    RadioButton optFri9AM;
     @FXML
-    RadioButton btnFri10AM;
+    RadioButton optFri10AM;
     @FXML
-    RadioButton btnFri11AM;
+    RadioButton optFri11AM;
     @FXML
-    RadioButton btnFri12PM;
+    RadioButton optFri12PM;
     @FXML
-    RadioButton btnFri1PM;
+    RadioButton optFri1PM;
     @FXML
-    RadioButton btnFri2PM;
+    RadioButton optFri2PM;
     @FXML
-    RadioButton btnFri3PM;
+    RadioButton optFri3PM;
     @FXML
-    RadioButton btnFri4PM;
+    RadioButton optFri4PM;
     @FXML
-    RadioButton btnFri5PM;
+    RadioButton optFri5PM;
 
 
 
@@ -139,11 +139,11 @@ public class ScheduleController  {
     public void initialize(){
         
         RadioButton[] buttons = new RadioButton[]{
-        btnMon9AM,btnMon10AM,btnMon11AM,btnMon12PM,btnMon1PM,btnMon2PM,btnMon3PM,btnMon4PM,btnMon5PM,
-        btnTues9AM,btnTues10AM,btnTues11AM,btnTues12PM,btnTues1PM,btnTues2PM,btnTues3PM,btnTues4PM,btnTues5PM,
-        btnWed9AM,btnWed10AM,btnWed11AM,btnWed12PM,btnWed1PM,btnWed2PM,btnWed3PM,btnWed4PM,btnWed5PM,
-        btnThurs9AM,btnThurs10AM,btnThurs11AM,btnThurs12PM,btnThurs1PM,btnThurs2PM,btnThurs3PM,btnThurs4PM,btnThurs5PM,
-        btnFri9AM,btnFri10AM,btnFri11AM,btnFri12PM,btnFri1PM,btnFri2PM,btnFri3PM,btnFri4PM,btnFri5PM,
+        optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
+        optTues9AM,optTues10AM,optTues11AM,optTues12PM,optTues1PM,optTues2PM,optTues3PM,optTues4PM,optTues5PM,
+        optWed9AM,optWed10AM,optWed11AM,optWed12PM,optWed1PM,optWed2PM,optWed3PM,optWed4PM,optWed5PM,
+        optThurs9AM,optThurs10AM,optThurs11AM,optThurs12PM,optThurs1PM,optThurs2PM,optThurs3PM,optThurs4PM,optThurs5PM,
+        optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
         };
 
         
@@ -153,15 +153,15 @@ public class ScheduleController  {
     @FXML
     public void testy(ActionEvent e){
         buttons = new RadioButton[]{
-            btnMon9AM,btnMon10AM,btnMon11AM,btnMon12PM,btnMon1PM,btnMon2PM,btnMon3PM,btnMon4PM,btnMon5PM,
-            btnTues9AM,btnTues10AM,btnTues11AM,btnTues12PM,btnTues1PM,btnTues2PM,btnTues3PM,btnTues4PM,btnTues5PM,
-            btnWed9AM,btnWed10AM,btnWed11AM,btnWed12PM,btnWed1PM,btnWed2PM,btnWed3PM,btnWed4PM,btnWed5PM,
-            btnThurs9AM,btnThurs10AM,btnThurs11AM,btnThurs12PM,btnThurs1PM,btnThurs2PM,btnThurs3PM,btnThurs4PM,btnThurs5PM,
-            btnFri9AM,btnFri10AM,btnFri11AM,btnFri12PM,btnFri1PM,btnFri2PM,btnFri3PM,btnFri4PM,btnFri5PM,
+            optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
+            optTues9AM,optTues10AM,optTues11AM,optTues12PM,optTues1PM,optTues2PM,optTues3PM,optTues4PM,optTues5PM,
+            optWed9AM,optWed10AM,optWed11AM,optWed12PM,optWed1PM,optWed2PM,optWed3PM,optWed4PM,optWed5PM,
+            optThurs9AM,optThurs10AM,optThurs11AM,optThurs12PM,optThurs1PM,optThurs2PM,optThurs3PM,optThurs4PM,optThurs5PM,
+            optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
             };
 
-        //System.out.println(btnMon9AM.getText());
-        btnMon9AM.setText("lol");
+        //System.out.println(optMon9AM.getText());
+        optMon9AM.setText("lol");
         buttons[10].setText("hmm");
 
 
@@ -188,18 +188,18 @@ public class ScheduleController  {
     //timeslot should be a monday at 9am
     public void updateSchedule(Employee e,TimeSlot tempTS) {
         buttons = new RadioButton[]{
-            btnMon9AM,btnMon10AM,btnMon11AM,btnMon12PM,btnMon1PM,btnMon2PM,btnMon3PM,btnMon4PM,btnMon5PM,
-            btnTues9AM,btnTues10AM,btnTues11AM,btnTues12PM,btnTues1PM,btnTues2PM,btnTues3PM,btnTues4PM,btnTues5PM,
-            btnWed9AM,btnWed10AM,btnWed11AM,btnWed12PM,btnWed1PM,btnWed2PM,btnWed3PM,btnWed4PM,btnWed5PM,
-            btnThurs9AM,btnThurs10AM,btnThurs11AM,btnThurs12PM,btnThurs1PM,btnThurs2PM,btnThurs3PM,btnThurs4PM,btnThurs5PM,
-            btnFri9AM,btnFri10AM,btnFri11AM,btnFri12PM,btnFri1PM,btnFri2PM,btnFri3PM,btnFri4PM,btnFri5PM,
+            optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
+            optTues9AM,optTues10AM,optTues11AM,optTues12PM,optTues1PM,optTues2PM,optTues3PM,optTues4PM,optTues5PM,
+            optWed9AM,optWed10AM,optWed11AM,optWed12PM,optWed1PM,optWed2PM,optWed3PM,optWed4PM,optWed5PM,
+            optThurs9AM,optThurs10AM,optThurs11AM,optThurs12PM,optThurs1PM,optThurs2PM,optThurs3PM,optThurs4PM,optThurs5PM,
+            optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
             };
 
         //System.out.println();
         System.out.println("is this printing");
-        //btnMon9AM.setText("lol");
+        //optMon9AM.setText("lol");
         //buttons[0].setText("xd");
-        //System.out.println(btnMon9AM.getText());
+        //System.out.println(optMon9AM.getText());
         
         //System.out.println("hmm");
         if (tempTS.getStart().getDayOfWeek() != DayOfWeek.MONDAY){
