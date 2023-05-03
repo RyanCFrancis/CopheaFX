@@ -85,7 +85,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button id="btn-Continue" fx:id="btnContinue" mnemonicParsing="false" onAction="#testy" text="Continue" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="11">
+      <Button id="btn-Continue" fx:id="btnContinue" mnemonicParsing="false" onAction="#continuebtn" text="Continue" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="11">
          <font>
             <Font size="14.0" />
          </font>
@@ -232,7 +232,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="optTues1PM" fx:id="optTues1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="6">
+      <RadioButton id="opt-Tues1PM" fx:id="optTues1PM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <font>
             <Font size="14.0" />
          </font>
@@ -312,7 +312,7 @@
             <Insets left="8.0" />
          </padding>
       </RadioButton>
-      <RadioButton id="optThurs9AM" fx:id="optThurs9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="2">
+      <RadioButton id="opt-Thurs9AM" fx:id="optThurs9AM" mnemonicParsing="false" text="Available" toggleGroup="$timeSlots" GridPane.columnIndex="4" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
