@@ -47,6 +47,43 @@ public class TimeSlot implements Comparable<TimeSlot> {
 	public void setEnd(OffsetDateTime end) {
 		this.end = end;
 	}
+
+	public void setMonday(){
+		switch (this.getStart().getDayOfWeek()) {
+            case MONDAY:
+                
+                break;
+            case TUESDAY:
+                this.setStart(OffsetDateTime.now().minusDays(1));
+                
+                break;
+            case WEDNESDAY:
+				this.setStart(OffsetDateTime.now().minusDays(2));
+                
+                break;
+            case THURSDAY:
+				this.setStart(OffsetDateTime.now().minusDays(3));
+                
+                break;
+            case FRIDAY:
+				this.setStart(OffsetDateTime.now().minusDays(4));
+                
+                break;
+            case SATURDAY:
+				this.setStart(OffsetDateTime.now().plusDays(2));
+                
+                break;
+            case SUNDAY:
+				this.setStart(OffsetDateTime.now().plusDays(1));
+                
+                break;
+        
+            default:
+                break;
+        }
+        this.setStart(this.getStart().withMinute(0));
+		this.setStart(this.getStart().withHour(9));
+	}
 	
 	//ONLY COMPARES THE START OF THE APPOINTMENT NOT THE ENDS
 	public int compareTo(TimeSlot b) {
@@ -74,13 +111,18 @@ public class TimeSlot implements Comparable<TimeSlot> {
 	@Override
 	public boolean equals(Object o) {
 		TimeSlot b = (TimeSlot) o;
-		if (this.compareTo(b) == 0) {return true;}
-		return false;
+		if (this.start.getHour() != b.getStart().getHour()){return false;}
+		if (this.start.getMinute() != b.getStart().getMinute()){return false;}
+		if (this.start.getDayOfMonth() != b.getStart().getDayOfMonth()){return false;}
+		if (this.start.getMonthValue() != b.getStart().getMonthValue()){return false;}
+		
+		return true;
 	}
 	
 	public String toString() {
 		//temporary
-		return this.getStart().toString();
+		return this.getStart().getMonthValue()+"/"+this.getStart().getDayOfMonth()+"/"+this.getStart().getYear()+
+		" "+this.getStart().getHour()+":00";
 	}
 
 

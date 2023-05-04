@@ -95,7 +95,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label id="lbl-Week" fx:id="lbblWeek" text="Week of _____" textAlignment="CENTER" GridPane.halignment="CENTER">
+      <Label id="lbl-Week" fx:id="lblWeek" text="Week of _____" textAlignment="CENTER" GridPane.halignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>

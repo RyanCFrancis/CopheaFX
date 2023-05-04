@@ -73,7 +73,7 @@ public class Appointment implements Comparable<Appointment> {
 	}
 
 	public String toString(){
-		return(this.patient+" "+this.slot);
+		return(this.patient.getFname()+" "+this.slot);
 	}
 	
 }

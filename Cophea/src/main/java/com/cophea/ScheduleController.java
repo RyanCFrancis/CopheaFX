@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 //import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 //import javafx.scene.Parent;
 //import javafx.scene.Scene;
 //import javafx.stage.Stage;
@@ -14,6 +15,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 //import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.DayOfWeek;
@@ -25,9 +27,15 @@ import javafx.event.EventHandler;
 
 public class ScheduleController implements Initializable {
 
+    Employee currEmployee;
+    TimeSlot nearestMonday; 
+    TimeSlot today;
     
     @FXML
-    ToggleGroup timeSlots;
+    Label lblWeek;
+    @FXML
+    Label lblTitle;
+
 
     @FXML
     RadioButton optMon9AM;
@@ -138,7 +146,7 @@ public class ScheduleController implements Initializable {
     
     @FXML
     public void initialize(URL u, ResourceBundle r){
-        System.out.println("uhhh");
+        //System.out.println("uhhh");
         // RadioButton[] buttons = new RadioButton[]{
         // optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
         // optTues9AM,optTues10AM,optTues11AM,optTues12PM,optTues1PM,optTues2PM,optTues3PM,optTues4PM,optTues5PM,
@@ -147,16 +155,23 @@ public class ScheduleController implements Initializable {
         // optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
         // };
 
+        today = new TimeSlot(OffsetDateTime.now());
+        
+        nearestMonday = new TimeSlot(OffsetDateTime.now());
+        nearestMonday.setMonday();
+        
+
+        
         
         //System.out.println(buttons[10]);
-        Employee dave = new Employee("dave","silverman","login","pw","Doctor");
+        Employee dave = new Employee("dave","Silverman","login","pw","Doctor");
 		Patient p1 = new Patient("Ryan","F","user","pass");
 		for (int i=1;i<8;i++){
-			TimeSlot t = new TimeSlot(2023, 1, i, 9);
+			TimeSlot t = new TimeSlot(2023, 5, i, 9);
             
 			//if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
 				dave.addSlot(t);
-                TimeSlot t2 = new TimeSlot(2023, 1, i, 11);
+                TimeSlot t2 = new TimeSlot(2023, 5, i, 11);
                 dave.addSlot(t2);
 			//}
 		}
@@ -166,7 +181,7 @@ public class ScheduleController implements Initializable {
                 
 			//}
 		}
-        this.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
+        this.updateSchedule(dave, nearestMonday);
 
     }
 
@@ -181,11 +196,11 @@ public class ScheduleController implements Initializable {
         Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		Patient p1 = new Patient("Ryan","F","user","pass");
 		for (int i=1;i<8;i++){
-			TimeSlot t = new TimeSlot(2023, 1, i, 15);
+			TimeSlot t = new TimeSlot(2023, 5, i, 15);
             
 			//if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
 				dave.addSlot(t);
-                TimeSlot t2 = new TimeSlot(2023, 1, i, 16);
+                TimeSlot t2 = new TimeSlot(2023, 5, i, 16);
                 dave.addSlot(t2);
 			//}
 		}
@@ -197,20 +212,18 @@ public class ScheduleController implements Initializable {
 		}
         
 		this.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
-        
     }
 
     @FXML
     public void continuebtn(){
-        
-        
+   
         for (int z=0;z<buttons.length;z++){
            // System.out.println(z+" "+buttons[z].isSelected());
             if(buttons[z].isSelected()){
                 System.out.println("the picked slot is:"+currentSlots[z]);
             }
         }
-
+        
     }
     
     
@@ -218,6 +231,7 @@ public class ScheduleController implements Initializable {
 
     //timeslot should be a monday at 9am
     public void updateSchedule(Employee e,TimeSlot TS) {
+    System.out.println(TS);
       
         buttons = new RadioButton[]{
             optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
@@ -227,6 +241,13 @@ public class ScheduleController implements Initializable {
             optFri9AM,optFri10AM,optFri11AM,optFri12PM,optFri1PM,optFri2PM,optFri3PM,optFri4PM,optFri5PM,
             };
 
+        
+
+        lblWeek.setText("Week of "+TS.getStart().getMonthValue()+"/"+TS.getStart().getDayOfMonth()+"/"+TS.getStart().getYear());
+        lblTitle.setText("Showing Appointments for Dr."+e.getLname());
+        System.out.println("Week of "+TS.getStart().getMonthValue()+"/"+TS.getStart().getDayOfMonth()+"/"+TS.getStart().getYear());
+
+        //fill the array with possible slots
         currentSlots = new TimeSlot[45];
         TimeSlot temp = new TimeSlot(TS.getStart());
         for (int i=0;i<currentSlots.length;i++){
@@ -255,7 +276,7 @@ public class ScheduleController implements Initializable {
         if (TS.getStart().getDayOfWeek() != DayOfWeek.MONDAY){
             System.out.println("ERROR:NOT A MONDAY");System.exit(59);
         }
-        if (TS.getStart().getHour() != 9){
+        if (TS.getStart().getHour() != 9 && TS.getStart().getMinute() != 0){
             System.out.println("ERROR: NOT A 9AM");System.exit(59);
         }
         ArrayList<Appointment> activeApps = e.getAppointments();
@@ -278,7 +299,10 @@ public class ScheduleController implements Initializable {
 
             //loop through busy appointments
             for (int q=0;q<activeApps.size();q++){
+                System.out.println();
+                System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
                 if (activeApps.get(q).getSlot().equals(TS)){
+                   //System.out.println("true");
                    buttons[i].setText("TAKEN");
                    buttons[i].setDisable(true);
                 }
