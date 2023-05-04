@@ -35,6 +35,10 @@ public class ScheduleController implements Initializable {
     Label lblWeek;
     @FXML
     Label lblTitle;
+    @FXML
+    Button btnPrevWeek;
+    @FXML
+    Button btnNextWeek;
 
 
     @FXML
@@ -165,8 +169,9 @@ public class ScheduleController implements Initializable {
         
         //System.out.println(buttons[10]);
         Employee dave = new Employee("dave","Silverman","login","pw","Doctor");
+        currEmployee = dave;
 		Patient p1 = new Patient("Ryan","F","user","pass");
-		for (int i=1;i<8;i++){
+		for (int i=1;i<20;i++){
 			TimeSlot t = new TimeSlot(2023, 5, i, 9);
             
 			//if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
@@ -225,7 +230,16 @@ public class ScheduleController implements Initializable {
         }
         
     }
-    
+    @FXML
+    public void nextWeekBtn(){
+        nearestMonday = nearestMonday.nextWeek();
+        this.updateSchedule(currEmployee, nearestMonday);
+    }
+    @FXML
+    public void prevWeekBtn(){
+        nearestMonday = nearestMonday.prevWeek();
+        this.updateSchedule(currEmployee, nearestMonday);
+    }
     
     
 
@@ -255,7 +269,7 @@ public class ScheduleController implements Initializable {
             currentSlots[i] = temp;
 
             if (temp.getStart().getHour() == 17){
-                temp = temp.incDay();
+                temp = temp.nextDay();
                 //System.out.println("day inc");
             }
             else {
@@ -274,16 +288,27 @@ public class ScheduleController implements Initializable {
         
         //System.out.println("hmm");
         if (TS.getStart().getDayOfWeek() != DayOfWeek.MONDAY){
-            System.out.println("ERROR:NOT A MONDAY");System.exit(59);
+            System.out.println("ERROR:NOT A MONDAY");
+            System.out.print(TS);
+            System.exit(59);
         }
         if (TS.getStart().getHour() != 9 && TS.getStart().getMinute() != 0){
-            System.out.println("ERROR: NOT A 9AM");System.exit(59);
+            System.out.println("ERROR: NOT A 9AM");
+            System.out.print(TS);
+            System.exit(59);
         }
         ArrayList<Appointment> activeApps = e.getAppointments();
         //ArrayList<TimeSlot> workingHours = e.getSlots();
         //System.out.println(workingHours);
         int i=0;
         while (i<45){
+            //if the date is passed the date of real life today, display too late or something
+            if (today.compareTo(TS) == 1){
+                buttons[i].setText("PASSED");
+                buttons[i].setDisable(true);
+            }
+
+
             //loop through working hours
             // for (int q=0;q<workingHours.size();q++){
             //     // System.out.println();
@@ -299,8 +324,8 @@ public class ScheduleController implements Initializable {
 
             //loop through busy appointments
             for (int q=0;q<activeApps.size();q++){
-                System.out.println();
-                System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
+                //System.out.println();
+                //System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
                 if (activeApps.get(q).getSlot().equals(TS)){
                    //System.out.println("true");
                    buttons[i].setText("TAKEN");
@@ -309,7 +334,7 @@ public class ScheduleController implements Initializable {
             }
 
             if (TS.getStart().getHour() == 17){
-                TS = TS.incDay();
+                TS = TS.nextDay();
                 //System.out.println("day inc");
             }
             else {

@@ -104,8 +104,14 @@ public class TimeSlot implements Comparable<TimeSlot> {
 		return new TimeSlot(this.start.plusHours(1));
 	}
 
-	public TimeSlot incDay(){
+	public TimeSlot nextDay(){
 		return new TimeSlot(this.start.plusHours(16));
+	}
+	public TimeSlot nextWeek(){
+		return new TimeSlot(this.start.plusDays(7));
+	}
+	public TimeSlot prevWeek(){
+		return new TimeSlot(this.start.minusDays(7));
 	}
 	
 	@Override
