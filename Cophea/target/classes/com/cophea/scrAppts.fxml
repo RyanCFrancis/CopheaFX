@@ -115,7 +115,7 @@
             <Insets left="5.0" />
          </GridPane.margin>
       </Label>
-      <Button id="btn-Continue" fx:id="btnContinue" mnemonicParsing="false" text="Continue" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="11">
+      <Button id="btn-Continue" fx:id="btnContinue" mnemonicParsing="false" onAction="#continuebtn" text="Continue" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="11">
          <font>
             <Font size="14.0" />
          </font>

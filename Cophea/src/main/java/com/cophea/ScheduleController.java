@@ -11,19 +11,19 @@ import javafx.scene.control.Label;
 //import javafx.stage.Stage;
 //import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
+//import javafx.scene.control.Toggle;
+//import javafx.scene.control.ToggleGroup;
 
 //import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 import java.time.DayOfWeek;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+//import javafx.collections.ObservableList;
+//import javafx.event.ActionEvent;
+//import javafx.event.EventHandler;
 
 public class ScheduleController implements Initializable {
 
@@ -186,12 +186,12 @@ public class ScheduleController implements Initializable {
                 
 			//}
 		}
-        this.updateSchedule(dave, nearestMonday);
+        this.updateSchedule(nearestMonday);
 
     }
 
     @FXML
-    public void testy(ActionEvent e){
+    public void testy(){
         
 
         //System.out.println(optMon9AM.getText());
@@ -216,7 +216,7 @@ public class ScheduleController implements Initializable {
 			}
 		}
         
-		this.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
+		this.updateSchedule( new TimeSlot(2023, 1, 2, 9));
     }
 
     @FXML
@@ -233,18 +233,18 @@ public class ScheduleController implements Initializable {
     @FXML
     public void nextWeekBtn(){
         nearestMonday = nearestMonday.nextWeek();
-        this.updateSchedule(currEmployee, nearestMonday);
+        this.updateSchedule( nearestMonday);
     }
     @FXML
     public void prevWeekBtn(){
         nearestMonday = nearestMonday.prevWeek();
-        this.updateSchedule(currEmployee, nearestMonday);
+        this.updateSchedule( nearestMonday);
     }
     
     
 
     //timeslot should be a monday at 9am
-    public void updateSchedule(Employee e,TimeSlot TS) {
+    public void updateSchedule(TimeSlot TS) {
     System.out.println(TS);
       
         buttons = new RadioButton[]{
@@ -258,7 +258,7 @@ public class ScheduleController implements Initializable {
         
 
         lblWeek.setText("Week of "+TS.getStart().getMonthValue()+"/"+TS.getStart().getDayOfMonth()+"/"+TS.getStart().getYear());
-        lblTitle.setText("Showing Appointments for Dr."+e.getLname());
+        lblTitle.setText("Showing Appointments for Dr."+currEmployee.getLname());
         System.out.println("Week of "+TS.getStart().getMonthValue()+"/"+TS.getStart().getDayOfMonth()+"/"+TS.getStart().getYear());
 
         //fill the array with possible slots
@@ -276,13 +276,17 @@ public class ScheduleController implements Initializable {
                 temp = temp.incHour();
                 //System.out.println("hour inc");
             }
+
+            //reset buttons to default text and state
+            //unselect any buttons if they are selected already
+            //this is necessary when changing the week you are viewing
+            buttons[i].setSelected(false);
+            buttons[i].setText("Available");
+            buttons[i].setDisable(false);
         }
 
-        //reset buttons to default text and state
-        for (int z=0;z<buttons.length;z++){
-            buttons[z].setText("Available");
-            buttons[z].setDisable(false);
-        }
+        
+        
 
         
         
@@ -290,24 +294,18 @@ public class ScheduleController implements Initializable {
         if (TS.getStart().getDayOfWeek() != DayOfWeek.MONDAY){
             System.out.println("ERROR:NOT A MONDAY");
             System.out.print(TS);
-            System.exit(59);
+            System.exit(69);
         }
         if (TS.getStart().getHour() != 9 && TS.getStart().getMinute() != 0){
             System.out.println("ERROR: NOT A 9AM");
             System.out.print(TS);
-            System.exit(59);
+            System.exit(69);
         }
-        ArrayList<Appointment> activeApps = e.getAppointments();
+        ArrayList<Appointment> activeApps = currEmployee.getAppointments();
         //ArrayList<TimeSlot> workingHours = e.getSlots();
         //System.out.println(workingHours);
         int i=0;
-        while (i<45){
-            //if the date is passed the date of real life today, display too late or something
-            if (today.compareTo(TS) == 1){
-                buttons[i].setText("PASSED");
-                buttons[i].setDisable(true);
-            }
-
+        while (i<45){     
 
             //loop through working hours
             // for (int q=0;q<workingHours.size();q++){
@@ -328,11 +326,18 @@ public class ScheduleController implements Initializable {
                 //System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
                 if (activeApps.get(q).getSlot().equals(TS)){
                    //System.out.println("true");
-                   buttons[i].setText("TAKEN");
+                   buttons[i].setText("BUSY");
                    buttons[i].setDisable(true);
                 }
             }
-
+            //disable button if that appointment has already passed in time
+            if (today.compareTo(TS) == 1){
+                buttons[i].setText("PASSED");
+                buttons[i].setDisable(true);
+            }
+            //go to the "next" occuring timeslot
+            // if it the end of a workday go the next date
+            //otherwise just increment to the next hour
             if (TS.getStart().getHour() == 17){
                 TS = TS.nextDay();
                 //System.out.println("day inc");

@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 
 //import java.io.IOException;
 
-
-
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
@@ -27,8 +25,6 @@ public class App extends Application {
 		//ScheduleController sched = new ScheduleController();
 		
 		
-		
-		
 		//f.t1();
 		Scene scene = new Scene(parent);
 		stage.setTitle("Cophea");
@@ -40,8 +36,8 @@ public class App extends Application {
     // SEND AN EMAIL TO CONFIRM APPOINT
 	
 	//patient menu
-	//add appointment
-	//change or cancel appointment
+	//add appointment -> pick doctor -> pick slot -> confirm -> "hey thanks, email has been sent!"
+	//change or cancel appointment -> pick appoint 
 	//view doctors
 
 	//employee menu
@@ -50,7 +46,6 @@ public class App extends Application {
 	//pick weekly schedule not specific dates
 	public static void main(String[] args) {
 		//ScheduleController sched = new ScheduleController();
-		
 		
        	//scheduleTesting();
         launch(args);
