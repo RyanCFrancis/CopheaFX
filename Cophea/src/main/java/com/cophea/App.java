@@ -14,9 +14,14 @@ import javafx.stage.Stage;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
-/**
- * JavaFX App
- */
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner; 
+import java.lang.Math;   
+
+
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
@@ -46,9 +51,15 @@ public class App extends Application {
 	//pick weekly schedule not specific dates
 	public static void main(String[] args) {
 		//ScheduleController sched = new ScheduleController();
-		
        	//scheduleTesting();
-        launch(args);
+		try {
+			fileFun();
+		} 
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+        //launch(args);
 
 		// Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		// Patient p1 = new Patient("Ryan","F","user","pass");
@@ -65,6 +76,53 @@ public class App extends Application {
 		// }
 		//sched.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
 	}
+
+	public static void fileFun() throws IOException {
+		System.out.println("here we go!");
+		File peepsFile = new File("Cophea/src/main/resources/com/cophea/test.csv");
+		Scanner scan = new Scanner(peepsFile);
+		//skip the line with the categories
+		scan.nextLine();
+		String[] lineValues = new String[7];
+		String line;
+		ArrayList<Patient> sickPeeps = new ArrayList<Patient>();
+		ArrayList<Employee> workPeeps = new ArrayList<Employee>();
+		while (scan.hasNext()){
+			line = scan.nextLine();
+			//System.out.println(line);
+			lineValues = line.split(",");
+			if (Boolean.parseBoolean(lineValues[6])){
+				sickPeeps.add(new Patient(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4]));
+			}
+			else {
+				//System.out.println("doctor found");
+				workPeeps.add(new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]));
+			}
+		}
+		// for (int i=0;i<sickPeeps.size();i++){
+		// 	System.out.println(sickPeeps.get(i));
+		// }
+		// System.out.println("workers below:");
+		// for (int i=0;i<workPeeps.size();i++){
+		// 	System.out.println(workPeeps.get(i));
+		// }
+		for (int i=0;i<workPeeps.size();i++){
+			String id = workPeeps.get(i).getId();
+			String partialPath = "Cophea/src/main/resources/com/cophea/ws";
+			String wsPath = partialPath+id;
+			File currFile = new File(wsPath);
+			if (!currFile.exists()){
+				currFile.createNewFile();
+				scan = new Scanner(wsPath);
+				FileWriter fw = new FileWriter(wsPath);
+			}
+			for (int q=4;q<24;q++){
+				
+			}
+		}
+		
+	}
+
 
 	public static void scheduleTesting(){
 		Employee dave = new Employee("dave","silverman","login","pw","Doctor");

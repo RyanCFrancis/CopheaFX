@@ -111,6 +111,9 @@ public class Person {
 
 	}
 	
+	public String toString(){
+		return(this.fname+" "+this.lname);
+	}
 	
 
 }

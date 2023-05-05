@@ -16,6 +16,13 @@ public class Employee extends Person {
 		this.conditions = new ArrayList<String>();
 		this.role = role;
 	}
+
+	public Employee(String i,String f,String l, String login, String password,  String role) {
+		super(i,f,l, login, password,"go@gmail.com", false);
+		this.workSlots = new ArrayList<TimeSlot>();
+		this.conditions = new ArrayList<String>();
+		this.role = role;
+	}
 	public void addCondition(String c){
 		this.conditions.add(c);
 	}
