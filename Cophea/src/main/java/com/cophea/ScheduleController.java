@@ -197,11 +197,11 @@ public class ScheduleController implements Initializable {
 		// }
         
     }
-    public void loadData() throws IOException{
+    public void loadData() throws IOException {
         File testpeeps = new File("Cophea/src/main/resources/com/cophea/test.csv");
         Scanner scan = new Scanner(testpeeps);
 
-
+        //load timeslots into java memory
         scan.nextLine();
         scan.nextLine();
         scan.nextLine();
@@ -222,7 +222,28 @@ public class ScheduleController implements Initializable {
                 Integer.parseInt(lineValues[2]),
                 Integer.parseInt(lineValues[3])));
         }
+        scan.close();
 
+        //load appts to java memory
+
+        File currAppts = new File("Cophea/src/main/resources/com/cophea/appt/"+currEmployee.getId()+"_appts.csv");
+        scan = new Scanner(currAppts);
+		
+		
+
+        
+        //skip line with headers
+        scan.nextLine();
+        while(scan.hasNext()){
+            lineValues = scan.nextLine().split(",");
+            currEmployee.addAppointment(
+                new Appointment(currEmployee, new Patient(line, line, line, line, line), new TimeSlot(
+                    Integer.parseInt(lineValues[2]),
+                    Integer.parseInt(lineValues[3]),
+                    Integer.parseInt(lineValues[4]),
+                    Integer.parseInt(lineValues[5]))
+            ));
+        }
 
         this.updateSchedule(nearestMonday);
         

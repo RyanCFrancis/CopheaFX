@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Appointment implements Comparable<Appointment> {
 	private String id;
-	private ArrayList<Employee> providers;
+	//MAKING JUST 1 DOCTOR PER APPOINTMENT
+	private Employee provider;
 	private Patient patient;
 	private TimeSlot slot;
 	
@@ -12,12 +13,13 @@ public class Appointment implements Comparable<Appointment> {
 	
 	public Appointment() {
 		//blank constructor
-		providers = new ArrayList<Employee>();
+		//providers = new ArrayList<Employee>();
 	}
 	
 	public Appointment(Employee e,Patient p,TimeSlot ts) {
-		this.providers = new ArrayList<Employee>();
-		this.providers.add(e);
+		//this.providers = new ArrayList<Employee>();
+		//this.providers.add(e);
+		this.provider=e;
 		this.patient = p;
 		this.slot = ts;
 		
@@ -25,15 +27,16 @@ public class Appointment implements Comparable<Appointment> {
 	
 
 	
-	public ArrayList<Employee> getProviders() {
-		return providers;
-	}
+	// public ArrayList<Employee> getProviders() {
+	// 	return providers;
+	// }
 	public void addProvider(Employee e) {
-		providers.add(e);
+		//providers.add(e);
+		this.provider  =e;
 	}
-	public void removeProvider(Employee e) {
-		providers.remove(e);
-	}
+	// public void removeProvider(Employee e) {
+	// 	providers.remove(e);
+	// }
 	public void setPatient(Patient p) {
 		patient = p;
 	}

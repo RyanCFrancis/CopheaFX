@@ -107,12 +107,60 @@ public class App extends Application {
 		// 	System.out.println(workPeeps.get(i));
 		// }
 
-		// LOAD THE WORKSLOTS WITH DATA
+		// LOAD THE WORKSLOTS CSV WITH DATA
+		// for (int i=0;i<workPeeps.size();i++){
+		// 	String id = workPeeps.get(i).getId();
+		// 	String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
+		// 	String wsPath = partialPath+id;
+		// 	File currFile = new File(wsPath+"_workinghours.csv");
+			
+			
+		// 	//if file doesnt exist, intilize it
+		// 	if (!currFile.isFile()){
+		// 		System.out.println("NEW FILE BEING MADE");
+
+		// 		currFile.createNewFile();
+		// 		FileWriter fw = new FileWriter(currFile,false);
+		// 		fw.write("year,month,day,hour");
+		// 		//close the writer to "save" the file
+		// 		fw.close();
+		// 	}
+		// 	FileWriter fw = new FileWriter(currFile,true);
+		// 	for (int q=4;q<24;q++){
+		// 		fw.write("\n");
+		// 		fw.write("2023,5,"+String.valueOf(q)+","+String.valueOf((int)(Math.random()*(17-9)+1)+9));
+		// 	}
+		// 	fw.close();
+		// }
+
+		
+		
+		//LOAD EMP WORKSLOTS ARRAYLIST WITH THE ONES FROM THE FILE
+		//LOAD EMPLOYEES WITH APPOINTMENTS
 		for (int i=0;i<workPeeps.size();i++){
-			String id = workPeeps.get(i).getId();
+			Employee currPeep = workPeeps.get(i);
+			String id = currPeep.getId();
 			String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
 			String wsPath = partialPath+id;
 			File currFile = new File(wsPath+"_workinghours.csv");
+			scan = new Scanner(currFile);
+			scan.nextLine();
+        	while(scan.hasNext()){
+            	lineValues = scan.nextLine().split(",");
+            	currPeep.addSlot(new TimeSlot(
+                Integer.parseInt(lineValues[0]),
+                Integer.parseInt(lineValues[1]),
+                Integer.parseInt(lineValues[2]),
+                Integer.parseInt(lineValues[3])));
+        }
+			
+
+
+
+
+			 partialPath = "Cophea/src/main/resources/com/cophea/appt/";
+			 wsPath = partialPath+id;
+			 currFile = new File(wsPath+"_appts.csv");
 			
 			
 			//if file doesnt exist, intilize it
@@ -121,14 +169,19 @@ public class App extends Application {
 
 				currFile.createNewFile();
 				FileWriter fw = new FileWriter(currFile,false);
-				fw.write("year,month,day,hour");
+				fw.write("emp_id,p_id,year,month,day,hour");
 				//close the writer to "save" the file
 				fw.close();
 			}
+			System.out.println(currPeep);
 			FileWriter fw = new FileWriter(currFile,true);
-			for (int q=4;q<24;q++){
+			for (int q=0;q<currPeep.getSlots().size();q++){
+				System.out.println(q);
+				TimeSlot currSlot = currPeep.getSlots().get(q);
+				String timing1 = String.valueOf(currSlot.getStart().getYear())+","+String.valueOf(currSlot.getStart().getMonthValue())+",";
+				String timing2 = String.valueOf(currSlot.getStart().getDayOfMonth())+","+String.valueOf(currSlot.getStart().getHour());
 				fw.write("\n");
-				fw.write("2023,5,"+String.valueOf(q)+","+String.valueOf((int)(Math.random()*(17-9)+1)+9));
+				fw.write(currPeep.getId()+","+"0"+","+timing1+timing2);
 			}
 			fw.close();
 		}
