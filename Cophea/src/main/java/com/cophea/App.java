@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
-
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -99,6 +99,7 @@ public class App extends Application {
 				workPeeps.add(new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]));
 			}
 		}
+		scan.close();
 		// for (int i=0;i<sickPeeps.size();i++){
 		// 	System.out.println(sickPeeps.get(i));
 		// }
@@ -108,17 +109,22 @@ public class App extends Application {
 		// }
 		for (int i=0;i<workPeeps.size();i++){
 			String id = workPeeps.get(i).getId();
-			String partialPath = "Cophea/src/main/resources/com/cophea/ws";
+			String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
 			String wsPath = partialPath+id;
 			File currFile = new File(wsPath);
-			if (!currFile.exists()){
+			FileWriter fw = new FileWriter(wsPath,true);
+			scan = new Scanner(wsPath);
+			if (!currFile.isDirectory()){
+				System.out.println("NEW FILE BEING MADE");
+				//if file doesnt exist, intilize it
 				currFile.createNewFile();
-				scan = new Scanner(wsPath);
-				FileWriter fw = new FileWriter(wsPath);
+				fw.write("year,month,day,hour");
 			}
 			for (int q=4;q<24;q++){
-				
+				fw.write("\n");
+				fw.write("2023,5,"+String.valueOf(q)+","+String.valueOf((int)(Math.random()*(17-9)+1)+9));
 			}
+			fw.close();
 		}
 		
 	}
