@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Employee extends Person {
 	//examples are "Doctor","Nurse","Surgeon"
+	//TODO CONDITIONS PROPERLY IMPLEMENTED 
 	private String role;
 	//coniditions they treat
 	private ArrayList<String> conditions;
@@ -11,14 +12,14 @@ public class Employee extends Person {
 	private ArrayList<TimeSlot> workSlots;
 	
 	public Employee(String f,String l, String login, String password,  String role) {
-		super("0",f,l, login, password,"go@gmail.com", false);
+		super("0",f,l, login, password, false);
 		this.workSlots = new ArrayList<TimeSlot>();
 		this.conditions = new ArrayList<String>();
 		this.role = role;
 	}
 
 	public Employee(String i,String f,String l, String login, String password,  String role) {
-		super(i,f,l, login, password,"go@gmail.com", false);
+		super(i,f,l, login, password, false);
 		this.workSlots = new ArrayList<TimeSlot>();
 		this.conditions = new ArrayList<String>();
 		this.role = role;

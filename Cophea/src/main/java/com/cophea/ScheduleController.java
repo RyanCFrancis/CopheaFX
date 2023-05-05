@@ -198,20 +198,21 @@ public class ScheduleController implements Initializable {
         
     }
     public void loadData() throws IOException {
-        File testpeeps = new File("Cophea/src/main/resources/com/cophea/test.csv");
-        Scanner scan = new Scanner(testpeeps);
+        // File testpeeps = new File("Cophea/src/main/resources/com/cophea/test.csv");
+        // Scanner scan = new Scanner(testpeeps);
 
-        //load timeslots into java memory
-        scan.nextLine();
-        scan.nextLine();
-        scan.nextLine();
-		String[] lineValues = new String[8];
-		String line = scan.nextLine();
-        lineValues = line.split(",");
-        currEmployee = new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]);
-
+        // //load timeslots into java memory
+        // scan.nextLine();
+        // scan.nextLine();
+        // scan.nextLine();
+		// String[] lineValues = new String[8];
+		// String line = scan.nextLine();
+        // lineValues = line.split(",");
+        // currEmployee = new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]);
+        currEmployee = DataManager.loadEmployee("8");
         DataManager.loadAppts(currEmployee);
         DataManager.loadWorkSlots(currEmployee);
+        //scan.close();
         
 
         //load appts to java memory

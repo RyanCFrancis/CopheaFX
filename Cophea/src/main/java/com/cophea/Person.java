@@ -11,12 +11,12 @@ public class Person {
 	private boolean isPatient;
 	//private a-list appointments;
 	private ArrayList<Appointment> appointments;
-	public Person(String idnum,String f,String l, String login, String password, String em,boolean isPatient) {
+	public Person(String idnum,String f,String l, String login, String password,boolean isPatient) {
 		super();
 		this.id = idnum;
 		this.fname = f;
 		this.lname = l;
-		this.email = em;
+		//this.email = em;
 		this.login = login;
 		this.password = password;
 		this.isPatient = isPatient;

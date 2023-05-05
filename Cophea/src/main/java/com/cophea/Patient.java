@@ -7,12 +7,12 @@ public class Patient extends Person {
 	
 
 	public Patient(String f,String l, String login, String password) {
-		super("0",f,l, login, password,"go@gmail.com", true);
+		super("0",f,l, login, password, true);
 		this.diag = new ArrayList<String>();
 	}
 
 	public Patient(String i,String f,String l, String login, String password) {
-		super(i,f,l, login, password,"go@gmail.com", true);
+		super(i,f,l, login, password, true);
 		this.diag = new ArrayList<String>();
 	}
 	
