@@ -18,7 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner; 
-import java.lang.Math;   
+import java.lang.Math;
 
 
 public class App extends Application {
@@ -112,7 +112,7 @@ public class App extends Application {
 			String id = workPeeps.get(i).getId();
 			String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
 			String wsPath = partialPath+id;
-			File currFile = new File(wsPath);
+			File currFile = new File(wsPath+"_workinghours.csv");
 			
 			
 			//if file doesnt exist, intilize it
@@ -120,12 +120,12 @@ public class App extends Application {
 				System.out.println("NEW FILE BEING MADE");
 
 				currFile.createNewFile();
-				FileWriter fw = new FileWriter(wsPath,false);
+				FileWriter fw = new FileWriter(currFile,false);
 				fw.write("year,month,day,hour");
 				//close the writer to "save" the file
 				fw.close();
 			}
-			FileWriter fw = new FileWriter(wsPath,true);
+			FileWriter fw = new FileWriter(currFile,true);
 			for (int q=4;q<24;q++){
 				fw.write("\n");
 				fw.write("2023,5,"+String.valueOf(q)+","+String.valueOf((int)(Math.random()*(17-9)+1)+9));

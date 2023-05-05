@@ -210,7 +210,7 @@ public class ScheduleController implements Initializable {
         lineValues = line.split(",");
         currEmployee = new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]);
 
-        File currWS = new File("Cophea/src/main/resources/com/cophea/ws/"+currEmployee.getId());
+        File currWS = new File("Cophea/src/main/resources/com/cophea/ws/"+currEmployee.getId()+"_workinghours.csv");
         scan = new Scanner(currWS);
         //skip line with headers
         scan.nextLine();
@@ -342,12 +342,14 @@ public class ScheduleController implements Initializable {
         ArrayList<Appointment> activeApps = currEmployee.getAppointments();
         //ArrayList<TimeSlot> workingHours = e.getSlots();
         //System.out.println(workingHours);
+
+        //loop through the visible slots
         int i=0;
         while (i<45){ 
 
             //TODO change loop to go through currslots and check appoints and working in 1 loop rather than multiple
 
-           //loop through working hours
+           //loop through working hours of the employee
             for (int q=0;q<currEmployee.getSlots().size();q++){
                 // System.out.println();
                 // System.out.println(tempTS);
@@ -357,6 +359,7 @@ public class ScheduleController implements Initializable {
                    // System.out.println("lol");
                     buttons[i].setText("avail");
                 }
+                
                 //System.out.println(workingHours.get(q));
             }
 
@@ -366,7 +369,7 @@ public class ScheduleController implements Initializable {
                 //System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
                 if (activeApps.get(q).getSlot().equals(TS)){
                    //System.out.println("true");
-                   buttons[i].setText("BUSY");
+                   buttons[i].setText("BUSY2");
                    buttons[i].setDisable(true);
                 }
             }
