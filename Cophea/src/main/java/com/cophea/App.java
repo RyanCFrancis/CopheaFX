@@ -107,19 +107,23 @@ public class App extends Application {
 		// for (int i=0;i<workPeeps.size();i++){
 		// 	System.out.println(workPeeps.get(i));
 		// }
-		for (int i=0;i<workPeeps.size();i++){
+		for (int i=0;i<workPeeps.size()-2;i++){
 			String id = workPeeps.get(i).getId();
 			String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
 			String wsPath = partialPath+id;
 			File currFile = new File(wsPath);
-			FileWriter fw = new FileWriter(wsPath,true);
-			scan = new Scanner(wsPath);
-			if (!currFile.isDirectory()){
+			
+			
+			//if file doesnt exist, intilize it
+			if (!currFile.isFile()){
 				System.out.println("NEW FILE BEING MADE");
-				//if file doesnt exist, intilize it
+
 				currFile.createNewFile();
+				FileWriter fw = new FileWriter(wsPath,false);
 				fw.write("year,month,day,hour");
+				fw.close();
 			}
+			FileWriter fw = new FileWriter(wsPath,true);
 			for (int q=4;q<24;q++){
 				fw.write("\n");
 				fw.write("2023,5,"+String.valueOf(q)+","+String.valueOf((int)(Math.random()*(17-9)+1)+9));
