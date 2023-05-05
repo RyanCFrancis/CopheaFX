@@ -145,7 +145,7 @@ public class DataManager {
 		File currFile = new File(wsPath+"_appts.csv");
 
 			
-        //if file doesnt exist, intilize it
+        //if file doesnt exist, intialize it
 			if (!currFile.isFile()){
 				System.out.println("NEW FILE BEING MADE");
 
@@ -171,7 +171,7 @@ public class DataManager {
 			File currFile = new File(wsPath+"_workinghours.csv");
 			
 			
-			//if file doesnt exist, intilize it
+			//if file doesnt exist, intialize it
 			if (!currFile.isFile()){
 				System.out.println("NEW FILE BEING MADE");
 
@@ -184,7 +184,5 @@ public class DataManager {
 			FileWriter fw = new FileWriter(currFile,true);
 			fw.write(TS.write());
 			fw.close();
-		
-
     }
 }
