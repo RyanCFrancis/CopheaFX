@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -53,13 +52,13 @@ public class App extends Application {
 		//ScheduleController sched = new ScheduleController();
        	//scheduleTesting();
 		try {
-			fileFun();
+			//fileFun();
 		} 
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-        //launch(args);
+        launch(args);
 
 		// Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		// Patient p1 = new Patient("Ryan","F","user","pass");
@@ -107,7 +106,9 @@ public class App extends Application {
 		// for (int i=0;i<workPeeps.size();i++){
 		// 	System.out.println(workPeeps.get(i));
 		// }
-		for (int i=0;i<workPeeps.size()-2;i++){
+
+		// LOAD THE WORKSLOTS WITH DATA
+		for (int i=0;i<workPeeps.size();i++){
 			String id = workPeeps.get(i).getId();
 			String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
 			String wsPath = partialPath+id;
@@ -121,6 +122,7 @@ public class App extends Application {
 				currFile.createNewFile();
 				FileWriter fw = new FileWriter(wsPath,false);
 				fw.write("year,month,day,hour");
+				//close the writer to "save" the file
 				fw.close();
 			}
 			FileWriter fw = new FileWriter(wsPath,true);

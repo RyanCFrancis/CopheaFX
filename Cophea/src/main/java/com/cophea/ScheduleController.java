@@ -25,6 +25,11 @@ import java.util.ResourceBundle;
 //import javafx.event.ActionEvent;
 //import javafx.event.EventHandler;
 
+import java.io.File;
+import java.util.Scanner; 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class ScheduleController implements Initializable {
 
     Employee currEmployee;
@@ -165,29 +170,62 @@ public class ScheduleController implements Initializable {
         nearestMonday.setMonday();
         
 
-        
+        try {
+            loadData();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         
         //System.out.println(buttons[10]);
-        Employee dave = new Employee("dave","Silverman","login","pw","Doctor");
-        currEmployee = dave;
-		Patient p1 = new Patient("Ryan","F","user","pass");
-		for (int i=1;i<20;i++){
-			TimeSlot t = new TimeSlot(2023, 5, i, 9);
+        // Employee dave = new Employee("dave","Silverman","login","pw","Doctor");
+        // currEmployee = dave;
+		// Patient p1 = new Patient("Ryan","F","user","pass");
+		// for (int i=1;i<20;i++){
+		// 	TimeSlot t = new TimeSlot(2023, 5, i, 9);
             
-			//if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
-				dave.addSlot(t);
-                TimeSlot t2 = new TimeSlot(2023, 5, i, 11);
-                dave.addSlot(t2);
-			//}
-		}
-		for (int i = 0; i < dave.getSlots().size(); i++) {
-			//if (i%2==0){
-				dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
+		// 	//if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
+		// 		dave.addSlot(t);
+        //         TimeSlot t2 = new TimeSlot(2023, 5, i, 11);
+        //         dave.addSlot(t2);
+		// 	//}
+		// }
+		// for (int i = 0; i < dave.getSlots().size(); i++) {
+		// 	//if (i%2==0){
+		// 		dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
                 
-			//}
-		}
-        this.updateSchedule(nearestMonday);
+		// 	//}
+		// }
+        
+    }
+    public void loadData() throws IOException{
+        File testpeeps = new File("Cophea/src/main/resources/com/cophea/test.csv");
+        Scanner scan = new Scanner(testpeeps);
 
+
+        scan.nextLine();
+        scan.nextLine();
+        scan.nextLine();
+		String[] lineValues = new String[7];
+		String line = scan.nextLine();
+        lineValues = line.split(",");
+        currEmployee = new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]);
+
+        File currWS = new File("Cophea/src/main/resources/com/cophea/ws/"+currEmployee.getId());
+        scan = new Scanner(currWS);
+        //skip line with headers
+        scan.nextLine();
+        while(scan.hasNext()){
+            lineValues = scan.nextLine().split(",");
+            currEmployee.addSlot(new TimeSlot(
+                Integer.parseInt(lineValues[0]),
+                Integer.parseInt(lineValues[1]),
+                Integer.parseInt(lineValues[2]),
+                Integer.parseInt(lineValues[3])));
+        }
+
+
+        this.updateSchedule(nearestMonday);
+        
     }
 
     @FXML
@@ -305,20 +343,22 @@ public class ScheduleController implements Initializable {
         //ArrayList<TimeSlot> workingHours = e.getSlots();
         //System.out.println(workingHours);
         int i=0;
-        while (i<45){     
+        while (i<45){ 
 
-            //loop through working hours
-            // for (int q=0;q<workingHours.size();q++){
-            //     // System.out.println();
-            //     // System.out.println(tempTS);
-            //     // System.out.println(workingHours.get(q));
-            //     // System.out.println("---");
-            //     if (tempTS.equals(workingHours.get(q))){
-            //        // System.out.println("lol");
-            //         buttons[i].setText("avail");
-            //     }
-            //     //System.out.println(workingHours.get(q));
-            // }
+            //TODO change loop to go through currslots and check appoints and working in 1 loop rather than multiple
+
+           //loop through working hours
+            for (int q=0;q<currEmployee.getSlots().size();q++){
+                // System.out.println();
+                // System.out.println(tempTS);
+                // System.out.println(workingHours.get(q));
+                // System.out.println("---");
+                if (TS.equals(currEmployee.getSlots().get(q))){
+                   // System.out.println("lol");
+                    buttons[i].setText("avail");
+                }
+                //System.out.println(workingHours.get(q));
+            }
 
             //loop through busy appointments
             for (int q=0;q<activeApps.size();q++){
