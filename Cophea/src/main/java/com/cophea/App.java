@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.util.Scanner; 
 import java.lang.Math;
 
+//TODO FILESAVING CLASS AND LOADING FROM FILE
+//CONTROLLERS FOR THE OTHER SCREENS
 
 public class App extends Application {
     @Override
@@ -28,14 +30,20 @@ public class App extends Application {
         Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
 		//ScheduleController sched = new ScheduleController();
 		
-		
 		//f.t1();
 		Scene scene = new Scene(parent);
 		stage.setTitle("Cophea");
 		stage.setScene(scene);
 		stage.show();
-		
     }
+
+	//ASK PROF
+	//NEED 2 TYPES OF PEOPLE?
+	//just 1 login - patient
+	//SUBMIT JAR EXE OR NO?
+	//jar and zip??
+
+
 
     // SEND AN EMAIL TO CONFIRM APPOINT
 	
@@ -77,7 +85,7 @@ public class App extends Application {
 	}
 
 	public static void fileFun() throws IOException {
-		System.out.println("here we go!");
+		//System.out.println("here we go!");
 		File peepsFile = new File("Cophea/src/main/resources/com/cophea/test.csv");
 		Scanner scan = new Scanner(peepsFile);
 		//skip the line with the categories

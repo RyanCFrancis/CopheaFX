@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane id="scrDisplayMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="95.0" minHeight="3.0" prefHeight="39.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label id="lblInx" alignment="CENTER" text="Choose an option below: " GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+         <padding>
+            <Insets top="2.0" />
+         </padding>
+      </Label>
+      <RadioButton id="opt-ScheduleAppt" fx:id="optScheduleAppt" mnemonicParsing="false" text="Schedule an Appointment" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+         <toggleGroup>
+            <ToggleGroup fx:id="menuOption" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton id="opt-ModifyAppt" fx:id="optModifyAppt" mnemonicParsing="false" text="Change / Cancel an Appointment" toggleGroup="$menuOption" GridPane.rowIndex="2">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton id="opt-ViewDoctors" fx:id="optViewDoctors" mnemonicParsing="false" text="View Doctors" toggleGroup="$menuOption" GridPane.rowIndex="3">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </RadioButton>
+      <Button id="btn-Continue" fx:id="btnContinue" mnemonicParsing="false" text="Continue" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button id="btn-Exit" fx:id="btnExit" mnemonicParsing="false" text="Exit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+   <padding>
+      <Insets top="5.0" />
+   </padding>
+</GridPane>

@@ -54,6 +54,7 @@ public class Appointment implements Comparable<Appointment> {
 	}
 
 	//simply compares the appointment timing and if the patient is the same
+	//TODO SET UP PROPER SORTING?
 	public int compareTo(Appointment b) {
 		int timeVal = this.getSlot().compareTo(b.getSlot());
 		boolean patVal = this.getPatient().equals(b.getPatient());

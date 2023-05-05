@@ -205,46 +205,22 @@ public class ScheduleController implements Initializable {
         scan.nextLine();
         scan.nextLine();
         scan.nextLine();
-		String[] lineValues = new String[7];
+		String[] lineValues = new String[8];
 		String line = scan.nextLine();
         lineValues = line.split(",");
         currEmployee = new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]);
 
-        File currWS = new File("Cophea/src/main/resources/com/cophea/ws/"+currEmployee.getId()+"_workinghours.csv");
-        scan = new Scanner(currWS);
-        //skip line with headers
-        scan.nextLine();
-        while(scan.hasNext()){
-            lineValues = scan.nextLine().split(",");
-            currEmployee.addSlot(new TimeSlot(
-                Integer.parseInt(lineValues[0]),
-                Integer.parseInt(lineValues[1]),
-                Integer.parseInt(lineValues[2]),
-                Integer.parseInt(lineValues[3])));
-        }
-        scan.close();
+        DataManager.loadAppts(currEmployee);
+        DataManager.loadWorkSlots(currEmployee);
+        
 
         //load appts to java memory
 
-        File currAppts = new File("Cophea/src/main/resources/com/cophea/appt/"+currEmployee.getId()+"_appts.csv");
-        scan = new Scanner(currAppts);
-		
-		
-
+       
+        //System.out.println( currEmployee.getSlots());
         
-        //skip line with headers
-        scan.nextLine();
-        while(scan.hasNext()){
-            lineValues = scan.nextLine().split(",");
-            currEmployee.addAppointment(
-                new Appointment(currEmployee, new Patient(line, line, line, line, line), new TimeSlot(
-                    Integer.parseInt(lineValues[2]),
-                    Integer.parseInt(lineValues[3]),
-                    Integer.parseInt(lineValues[4]),
-                    Integer.parseInt(lineValues[5]))
-            ));
-        }
-
+        
+        //System.out.println( currEmployee.getSlots());
         this.updateSchedule(nearestMonday);
         
     }
@@ -304,7 +280,7 @@ public class ScheduleController implements Initializable {
 
     //timeslot should be a monday at 9am
     public void updateSchedule(TimeSlot TS) {
-    System.out.println(TS);
+    //System.out.println(TS);
       
         buttons = new RadioButton[]{
             optMon9AM,optMon10AM,optMon11AM,optMon12PM,optMon1PM,optMon2PM,optMon3PM,optMon4PM,optMon5PM,
@@ -318,7 +294,7 @@ public class ScheduleController implements Initializable {
 
         lblWeek.setText("Week of "+TS.getStart().getMonthValue()+"/"+TS.getStart().getDayOfMonth()+"/"+TS.getStart().getYear());
         lblTitle.setText("Showing Appointments for Dr."+currEmployee.getLname());
-        System.out.println("Week of "+TS.getStart().getMonthValue()+"/"+TS.getStart().getDayOfMonth()+"/"+TS.getStart().getYear());
+        //System.out.println("Week of "+TS.getStart().getMonthValue()+"/"+TS.getStart().getDayOfMonth()+"/"+TS.getStart().getYear());
 
         //fill the array with possible slots
         currentSlots = new TimeSlot[45];
@@ -340,8 +316,8 @@ public class ScheduleController implements Initializable {
             //unselect any buttons if they are selected already
             //this is necessary when changing the week you are viewing
             buttons[i].setSelected(false);
-            buttons[i].setText("Available");
-            buttons[i].setDisable(false);
+            buttons[i].setText("BUSY1");
+            buttons[i].setDisable(true);
         }
 
         
@@ -364,27 +340,30 @@ public class ScheduleController implements Initializable {
         //ArrayList<TimeSlot> workingHours = e.getSlots();
         //System.out.println(workingHours);
 
-        //loop through the visible slots
+        //loop through the visible slots/possible buttons
         int i=0;
         while (i<45){ 
 
             //TODO change loop to go through currslots and check appoints and working in 1 loop rather than multiple
 
            //loop through working hours of the employee
+           
             for (int q=0;q<currEmployee.getSlots().size();q++){
                 // System.out.println();
-                // System.out.println(tempTS);
-                // System.out.println(workingHours.get(q));
+                //System.out.println(TS);
+                //System.out.println(currEmployee.getSlots().get(q));
                 // System.out.println("---");
+
+                //if the employee is working that hour, make the appointment available
                 if (TS.equals(currEmployee.getSlots().get(q))){
-                   // System.out.println("lol");
                     buttons[i].setText("avail");
+                    buttons[i].setDisable(false);
                 }
                 
                 //System.out.println(workingHours.get(q));
             }
 
-            //loop through busy appointments
+            //loop through busy appointments and disable the busy buttons
             for (int q=0;q<activeApps.size();q++){
                 //System.out.println();
                 //System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
@@ -394,13 +373,15 @@ public class ScheduleController implements Initializable {
                    buttons[i].setDisable(true);
                 }
             }
-            //disable button if that appointment has already passed in time
+
+
+            //disable the current button if that appointment has already passed in time
             if (today.compareTo(TS) == 1){
                 buttons[i].setText("PASSED");
                 buttons[i].setDisable(true);
             }
             //go to the "next" occuring timeslot
-            // if it the end of a workday go the next date
+            // if it the end of a workday go the next date at 9am
             //otherwise just increment to the next hour
             if (TS.getStart().getHour() == 17){
                 TS = TS.nextDay();
