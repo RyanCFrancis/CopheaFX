@@ -131,6 +131,14 @@ public class TimeSlot implements Comparable<TimeSlot> {
 		" "+this.getStart().getHour()+":00";
 	}
 
+	public String write(){
+		String y = Integer.toString(this.start.getYear());
+		String m = Integer.toString(this.start.getMonthValue());
+		String d = Integer.toString(this.start.getDayOfMonth());
+		String h = Integer.toString(this.start.getHour());
+
+		return y+","+m+","+d+","+h;
+	}
 
 
 	//12am = 0

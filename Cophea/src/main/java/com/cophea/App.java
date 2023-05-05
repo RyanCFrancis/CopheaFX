@@ -51,7 +51,7 @@ public class App extends Application {
 	//add appointment -> pick doctor -> pick slot -> confirm -> "hey thanks, email has been sent!"
 	//change or cancel appointment -> pick appoint 
 	//view doctors
-
+	
 	//employee menu
 	//view appointments
 	//changing schedule (cancelling apointments?)

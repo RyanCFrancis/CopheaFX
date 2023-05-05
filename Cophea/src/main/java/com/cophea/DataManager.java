@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.util.Scanner; 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class DataManager {
@@ -134,9 +135,56 @@ public class DataManager {
         }
         emp.getSlots().sort(null);
         scan.close();
+  
+    }
 
+    public static void writeAppointment(Person person,Appointment appo) throws IOException{
+        String id = person.getId();
+		String partialPath = "Cophea/src/main/resources/com/cophea/appt/";
+		String wsPath = partialPath+id;
+		File currFile = new File(wsPath+"_appts.csv");
 
+			
+        //if file doesnt exist, intilize it
+			if (!currFile.isFile()){
+				System.out.println("NEW FILE BEING MADE");
 
-      
+				currFile.createNewFile();
+				FileWriter fw = new FileWriter(currFile,false);
+				fw.write("emp_id,p_id,year,month,day,hour");
+				//close the writer to "save" the file
+				fw.close();
+			}
+			System.out.println(person);
+			FileWriter fw = new FileWriter(currFile,true);
+			fw.write(appo.write());
+			fw.close();
+		
+
+    }
+
+    public static void writeWorkSlot(Employee emp,TimeSlot TS) throws IOException{
+        //TODO MAKE WRITE FUNCTION IN TIMESLOT
+            String id = emp.getId();
+			String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
+			String wsPath = partialPath+id;
+			File currFile = new File(wsPath+"_workinghours.csv");
+			
+			
+			//if file doesnt exist, intilize it
+			if (!currFile.isFile()){
+				System.out.println("NEW FILE BEING MADE");
+
+				currFile.createNewFile();
+				FileWriter fw = new FileWriter(currFile,false);
+				fw.write("year,month,day,hour");
+				//close the writer to "save" the file
+				fw.close();
+			}
+			FileWriter fw = new FileWriter(currFile,true);
+			fw.write(TS.write());
+			fw.close();
+		
+
     }
 }
