@@ -27,9 +27,9 @@ public class Appointment implements Comparable<Appointment> {
 	
 
 	
-	// public ArrayList<Employee> getProviders() {
-	// 	return providers;
-	// }
+	public Employee getProvider() {
+		return provider;
+	}
 	public void addProvider(Employee e) {
 		//providers.add(e);
 		this.provider  =e;
@@ -71,6 +71,7 @@ public class Appointment implements Comparable<Appointment> {
 		Appointment b = (Appointment) o;
 		int timeVal = this.getSlot().compareTo(b.getSlot());
 		boolean patVal = this.getPatient().equals(b.getPatient());
+		boolean empVal = this.getProvider().equals(b.getProvider());
 		
 		if (patVal && timeVal == 0) {return true;}
 		return false;

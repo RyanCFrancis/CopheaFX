@@ -209,18 +209,14 @@ public class ScheduleController implements Initializable {
 		// String line = scan.nextLine();
         // lineValues = line.split(",");
         // currEmployee = new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]);
+        
         currEmployee = DataManager.loadEmployee("8");
         DataManager.loadAppts(currEmployee);
         DataManager.loadWorkSlots(currEmployee);
         //scan.close();
         
-
         //load appts to java memory
-
-       
         //System.out.println( currEmployee.getSlots());
-        
-        
         //System.out.println( currEmployee.getSlots());
         this.updateSchedule(nearestMonday);
         
