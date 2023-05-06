@@ -290,7 +290,7 @@ public class DataManager {
         //fw.write(System.lineSeparator());
         for (int i=0;i<fileAppointments.size();i++){
             //fw.write("test");
-            //fw.write(System.lineSeparator());
+            fw.write(System.lineSeparator());
             fw.write(fileAppointments.get(i).write());
             
         }
@@ -351,7 +351,7 @@ public class DataManager {
         new FileWriter(currFile,false).close();
 
         //loop and re-add data
-        fw = new FileWriter(currFile,false);
+        fw = new FileWriter(currFile,true);
         fw.write(header);
         //fw.write(System.lineSeparator());
         for (int i=0;i<fileAppointments.size();i++){
@@ -403,10 +403,10 @@ public class DataManager {
         }
 
         //empty
-        new FileWriter(currFile,false).close();
+        new FileWriter(currFile,true).close();
 
         //loop and re-add data
-        FileWriter fw = new FileWriter(currFile);
+        FileWriter fw = new FileWriter(currFile,true);
         fw.write(header);
         //fw.write(System.lineSeparator());
         for (int i=0;i<fileWS.size();i++){

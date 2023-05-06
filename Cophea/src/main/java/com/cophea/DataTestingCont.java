@@ -78,7 +78,7 @@ public class DataTestingCont implements Initializable{
     public void v3func() throws FileNotFoundException, IOException{
         System.out.println("v3 going");
         DataManager.deleteAppointment(new Appointment(currEmployee, DataManager.getPatient("0"), new TimeSlot(2023, 5, 9, 9)));
-        DataManager.deleteWorkSlot(currEmployee, new TimeSlot(2023, 5, 9, 9));
+        //DataManager.deleteWorkSlot(currEmployee, new TimeSlot(2023, 5, 9, 9));
     }
     
 }
