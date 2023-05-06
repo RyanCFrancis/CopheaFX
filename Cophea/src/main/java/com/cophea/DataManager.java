@@ -164,31 +164,39 @@ public class DataManager {
 
     //there is no situation where an appointment is cancelled only for the doctor or patient
     //in order to avvoid a infinite recursive loop, the function will delete from the doctors file first, then the patient
-    public static void deleteAppointment(Employee emp,Appointment appo) throws IOException{
+    public static void deleteAppointment(Appointment appo) throws IOException{
+        Employee emp = appo.getProvider();
         String id = emp.getId();
 		String partialPath = "Cophea/src/main/resources/com/cophea/appt/";
 		String wsPath = partialPath+id;
 		File currFile = new File(wsPath+"_appts.csv");
         Scanner scan = new Scanner(currFile);
         String[] lineValues = new String[9];
-		String line = scan.nextLine();
-        lineValues = line.split(",");
+		
         Appointment tempAppo;
         String header = scan.nextLine();
 
         ArrayList<Appointment> fileAppointments = new ArrayList<Appointment>();
         
 
-        //TODO IF PATIENT, DELETE FROM THEIRS THEN GO TO DOCOTOR
-        //TODO IF DOCTOR DELTE IN DOCTOR THEN PATIENT
-        
-
 
         //loop to load the tempfile array with everything EXCEPT what we dont want to keep
         while (scan.hasNext()){
             //lineValues = scan.nextLine().split(",");
-           
-            tempAppo = new Appointment(emp,appo.getPatient(), appo.getSlot());
+            String line = scan.nextLine();
+            lineValues = line.split(",");
+            Employee e = DataManager.loadEmployee(lineValues[0]);
+            Patient pat = DataManager.loadPatient(lineValues[1]);
+            tempAppo =
+                new Appointment(
+                    e, 
+                    pat, 
+                    new TimeSlot(
+                    Integer.parseInt(lineValues[2]),
+                    Integer.parseInt(lineValues[3]),
+                    Integer.parseInt(lineValues[4]),
+                    Integer.parseInt(lineValues[5]))
+            );
             //if the appointment exists, skip that line so it is not included int the file
             if (appo.equals(tempAppo)){
                 scan.nextLine();
@@ -209,6 +217,8 @@ public class DataManager {
         }
         fw.close();
         scan.close();
+
+        
         
 
         //NOW perform the algo on the patient in the appointment
@@ -218,15 +228,28 @@ public class DataManager {
 		currFile = new File(wsPath+"_appts.csv");
         scan = new Scanner(currFile);
         lineValues = new String[9];
-		line = scan.nextLine();
-        lineValues = line.split(",");
         header = scan.nextLine();
+		
+        
         fileAppointments = new ArrayList<Appointment>();
 
         while (scan.hasNext()){
             //lineValues = scan.nextLine().split(",");
+            lineValues = scan.nextLine().split(",");
+            Employee e = DataManager.loadEmployee(lineValues[0]);
+            Patient pat = DataManager.loadPatient(lineValues[1]);
+            tempAppo =
+                new Appointment(
+                    e, 
+                    pat, 
+                    new TimeSlot(
+                    Integer.parseInt(lineValues[2]),
+                    Integer.parseInt(lineValues[3]),
+                    Integer.parseInt(lineValues[4]),
+                    Integer.parseInt(lineValues[5]))
+            );
            
-            tempAppo = new Appointment(appo.getProvider(),appo.getPatient(), appo.getSlot());
+             
             //if the appointment exists, skip that line so it is not included int the file
             if (appo.equals(tempAppo)){
                 scan.nextLine();
@@ -247,6 +270,15 @@ public class DataManager {
         }
         fw.close();
         scan.close();
+    }
+
+    public static void deleteWorkSlot(Employee emp,TimeSlot TS) throws IOException{
+        String id = emp.getId();
+        String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
+        String wsPath = partialPath+id;
+        File currFile = new File(wsPath+"_workinghours.csv");
+         
+        
     }
 
     public static void writeWorkSlot(Employee emp,TimeSlot TS) throws IOException{
