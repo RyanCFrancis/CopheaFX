@@ -225,7 +225,7 @@ public class DataManager {
         File currFile = new File(wsPath+"_workinghours.csv");
  
         FileWriter fw = new FileWriter(currFile,true);
-        //fw.write(System.lineSeparator());
+        fw.write(System.lineSeparator());
         fw.write(TS.write());
         //fw.write(System.lineSeparator());
         fw.close();
@@ -285,7 +285,7 @@ public class DataManager {
         new FileWriter(currFile,false).close();
 
         //loop and re-add data
-        FileWriter fw = new FileWriter(currFile);
+        FileWriter fw = new FileWriter(currFile,true);
         fw.write(header);
         //fw.write(System.lineSeparator());
         for (int i=0;i<fileAppointments.size();i++){
@@ -403,7 +403,7 @@ public class DataManager {
         }
 
         //empty
-        new FileWriter(currFile,true).close();
+        new FileWriter(currFile,false).close();
 
         //loop and re-add data
         FileWriter fw = new FileWriter(currFile,true);
