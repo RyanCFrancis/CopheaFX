@@ -105,10 +105,10 @@ public class Person {
 	@Override
 	public boolean equals(Object o) {
 		Person p = (Person) o;
-		if (!this.getFname().equalsIgnoreCase(p.getFname())) {return false;}
-		if (!this.getLname().equalsIgnoreCase(p.getLname())) {return false;}
-		return (this.isPatient()&& p.isPatient());
-
+		if (this.getId().equals(p.getId())){
+			return true;
+		}
+		return false;
 	}
 	
 	public String toString(){

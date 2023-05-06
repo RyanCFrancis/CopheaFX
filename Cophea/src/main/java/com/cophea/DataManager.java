@@ -111,7 +111,7 @@ public class DataManager {
         scan.nextLine();
         while(scan.hasNext()){
             lineValues = scan.nextLine().split(",");
-            System.out.println(lineValues);
+            //System.out.println(lineValues);
             Employee e = DataManager.getEmployee(lineValues[0]);
             Patient pat = DataManager.getPatient(lineValues[1]);
             person.addAppointment(
@@ -159,35 +159,34 @@ public class DataManager {
     //writes to the doctor first, then the patients file
     public static void writeAppointment(Employee emp,Appointment appo) throws IOException{
 
-        if (emp.getAppointments().contains((Appointment) appo)){
-            System.out.println("appo exists, will not write");
+        // for (int idk=0;idk<emp.getAppointments().size();idk++){
+        //     System.out.println(emp.getAppointments().get(idk));
+        //     if (emp.getAppointments().get(idk).equals(appo)){
+        //         // System.out.println("appo exists, will not write 1");
+        //     }
+        // }
+        // System.out.println("find this one:"+appo);
+
+        if (emp.getAppointments().contains(appo)){
+            System.out.println("appo exists, will not write to file");
             return;
         }
         String id = emp.getId();
-		String partialPath = "Cophea/src/main/resources/com/cophea/appt/";
+		final String partialPath = "Cophea/src/main/resources/com/cophea/appt/";
+
+
 		String wsPath = partialPath+id;
 		File currFile = new File(wsPath+"_appts.csv");
 
-        //if file doesnt exist, intialize it
-        // if (!currFile.isFile()){
-        // 	System.out.println("NEW FILE BEING MADE");
-
-        // 	currFile.createNewFile();
-        // 	FileWriter fw = new FileWriter(currFile,false);
-        // 	fw.write("emp_id,p_id,year,month,day,hour");
-        //     fw.write("\n");
-        // 	//close the writer to "save" the file
-        // 	fw.close();
-        // } else {
-        //     FileWriter fw = new FileWriter(currFile,true);
-        //     fw.write(appo.write());
-        //     fw.close();
-        // }
+       
 			
         FileWriter fw = new FileWriter(currFile,true);
-        
+        //System.out.println(appo.write());
+        // fw.write(System.lineSeparator());
         fw.write(appo.write());
+        //fw.write(System.lineSeparator());
         fw.close();
+        DataManager.updatePerson(emp);
  
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -197,65 +196,36 @@ public class DataManager {
         wsPath = partialPath+id;
         currFile = new File(wsPath+"_appts.csv");
 
-        // if (!currFile.isFile()){
-        //     System.out.println("NEW FILE BEING MADE");
-
-        //     currFile.createNewFile();
-        //     fw = new FileWriter(currFile,false);
-        //     fw.write("emp_id,p_id,year,month,day,hour");
-        //     fw.write("\n");
-        //     //close the writer to "save" the file
-        //     fw.close();
-        // } else {
-        //     fw = new FileWriter(currFile,true);
-        //     fw.write(appo.write());
-        //     fw.close();
-        // }
 
         fw = new FileWriter(currFile,true);
+        //System.out.println(appo.write());
+        // fw.write(System.lineSeparator());
         fw.write(appo.write());
+        //fw.write(System.lineSeparator());
         fw.close();
 
-        DataManager.updatePerson(emp);
+        
         DataManager.updatePerson(appo.getPatient());
     }
 
     public static void writeWorkSlot(Employee emp,TimeSlot TS) throws IOException{
+        //System.out.println("am i working?");
+        String id = emp.getId();
         
-        if (emp.getSlots().contains((TimeSlot) TS)){
+        if (emp.getSlots().contains(TS)){
             System.out.println("TS exists, will not write");
             return;
         }
 
-        String id = emp.getId();
-        String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
+        
+        final String partialPath = "Cophea/src/main/resources/com/cophea/ws/";
         String wsPath = partialPath+id;
         File currFile = new File(wsPath+"_workinghours.csv");
-        
-        
-        //if file doesnt exist, intialize it
-        // if (!currFile.isFile()){
-        //     System.out.println("NEW FILE BEING MADE");
-
-        //     currFile.createNewFile();
-        //     FileWriter fw = new FileWriter(currFile,false);
-        //     fw.write("year,month,day,hour");
-        //     fw.write("\n");
-        //     fw.write(TS.write());
-        //     //close the writer to "save" the file
-        //     fw.close();
-        // } else {
-        //     FileWriter fw = new FileWriter(currFile,true);
-        //     fw.write(TS.write());
-        //     fw.close();
-        // }
-
+ 
         FileWriter fw = new FileWriter(currFile,true);
-        
         fw.write(TS.write());
+        //fw.write(System.lineSeparator());
         fw.close();
-        
-        
         DataManager.updatePerson(emp);
         
     }
@@ -314,9 +284,11 @@ public class DataManager {
         //loop and re-add data
         FileWriter fw = new FileWriter(currFile);
         fw.write(header);
+        fw.write(System.lineSeparator());
         for (int i=0;i<fileAppointments.size();i++){
-            
+            //fw.write(System.lineSeparator());
             fw.write(fileAppointments.get(i).write());
+            fw.write(System.lineSeparator());
         }
         fw.close();
         scan.close();
@@ -369,10 +341,11 @@ public class DataManager {
         new FileWriter(currFile,false).close();
 
         //loop and re-add data
-        fw = new FileWriter(currFile);
+        fw = new FileWriter(currFile,false);
         fw.write(header);
+        fw.write(System.lineSeparator());
         for (int i=0;i<fileAppointments.size();i++){
-           
+            fw.write(System.lineSeparator());
             fw.write(fileAppointments.get(i).write());
         }
         fw.close();
@@ -424,9 +397,11 @@ public class DataManager {
         //loop and re-add data
         FileWriter fw = new FileWriter(currFile);
         fw.write(header);
+        fw.write(System.lineSeparator());
         for (int i=0;i<fileWS.size();i++){
-            
+            //fw.write(System.lineSeparator());
             fw.write(fileWS.get(i).write());
+            fw.write(System.lineSeparator());
         }
         
         fw.close();
