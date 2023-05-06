@@ -22,8 +22,12 @@ public class DataManager {
         
     }
 
+    
 
-    public static Boolean loadPatientLogin(String loginString,String pwString) throws FileNotFoundException{
+
+    //returns the persons id number if they successfully login, 
+    //otherwise returns the string "fail"
+    public static String loadPersonLogin(String loginString,String pwString) throws FileNotFoundException{
         File people = new File("Cophea/src/main/resources/com/cophea/test.csv");
         Scanner scan = new Scanner(people);
         String tempLogin,tempPW,line;
@@ -38,11 +42,12 @@ public class DataManager {
 
             if (loginString.equals(tempLogin)&& pwString.equals(tempPW)){
                 scan.close();
-                return true;
+                System.out.println("hey there u logged in");
+                return lineValues[0];
             }
         }
         scan.close();
-        return false;
+        return "fail";
 
     }
 

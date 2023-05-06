@@ -28,8 +28,11 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         //FXMLLoader loader = new FXMLLoader();
         //Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
-		Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/dataTesting.fxml"));
-		//ScheduleController sched = new ScheduleController();
+		//Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/dataTesting.fxml"));
+		Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml"));
+		ScheduleController sched = ScheduleController.getInstance();
+		LoginController LC = LoginController.getInstance();
+		
 		
 		//f.t1();
 		Scene scene = new Scene(parent);
