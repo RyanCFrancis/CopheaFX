@@ -82,7 +82,7 @@ public class Appointment implements Comparable<Appointment> {
 	}
 
 	public String write(){
-		return this.provider+","+this.getPatient()+","+this.getSlot().write();
+		return this.provider.getId()+","+this.getPatient().getId()+","+this.getSlot().write();
 	}
 	
 }

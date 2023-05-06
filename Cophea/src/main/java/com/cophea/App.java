@@ -27,7 +27,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //FXMLLoader loader = new FXMLLoader();
-        Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
+        //Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
+		Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/dataTesting.fxml"));
 		//ScheduleController sched = new ScheduleController();
 		
 		//f.t1();
