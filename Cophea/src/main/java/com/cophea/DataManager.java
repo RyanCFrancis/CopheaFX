@@ -182,12 +182,12 @@ public class DataManager {
 			
         FileWriter fw = new FileWriter(currFile,true);
         //System.out.println(appo.write());
-        // fw.write(System.lineSeparator());
+        fw.write(System.lineSeparator());
         fw.write(appo.write());
         //fw.write(System.lineSeparator());
         fw.close();
         DataManager.updatePerson(emp);
- 
+        
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -199,7 +199,7 @@ public class DataManager {
 
         fw = new FileWriter(currFile,true);
         //System.out.println(appo.write());
-        // fw.write(System.lineSeparator());
+        fw.write(System.lineSeparator());
         fw.write(appo.write());
         //fw.write(System.lineSeparator());
         fw.close();
@@ -207,6 +207,8 @@ public class DataManager {
         
         DataManager.updatePerson(appo.getPatient());
     }
+
+    //
 
     public static void writeWorkSlot(Employee emp,TimeSlot TS) throws IOException{
         //System.out.println("am i working?");
@@ -223,6 +225,7 @@ public class DataManager {
         File currFile = new File(wsPath+"_workinghours.csv");
  
         FileWriter fw = new FileWriter(currFile,true);
+        //fw.write(System.lineSeparator());
         fw.write(TS.write());
         //fw.write(System.lineSeparator());
         fw.close();
@@ -284,11 +287,12 @@ public class DataManager {
         //loop and re-add data
         FileWriter fw = new FileWriter(currFile);
         fw.write(header);
-        fw.write(System.lineSeparator());
+        //fw.write(System.lineSeparator());
         for (int i=0;i<fileAppointments.size();i++){
+            //fw.write("test");
             //fw.write(System.lineSeparator());
             fw.write(fileAppointments.get(i).write());
-            fw.write(System.lineSeparator());
+            
         }
         fw.close();
         scan.close();
@@ -297,6 +301,12 @@ public class DataManager {
         
         /////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////
+        System.out.println("TOUCHING THE PATIENT");
+        System.out.println("TOUCHING THE PATIENT");
+        System.out.println("TOUCHING THE PATIENT");
+        System.out.println("TOUCHING THE PATIENT");
+        System.out.println("TOUCHING THE PATIENT");
+        System.out.println("TOUCHING THE PATIENT");
         //NOW perform the algo on the patient in the appointment
         id = appo.getPatient().getId();
 		partialPath = "Cophea/src/main/resources/com/cophea/appt/";
@@ -343,9 +353,10 @@ public class DataManager {
         //loop and re-add data
         fw = new FileWriter(currFile,false);
         fw.write(header);
-        fw.write(System.lineSeparator());
+        //fw.write(System.lineSeparator());
         for (int i=0;i<fileAppointments.size();i++){
             fw.write(System.lineSeparator());
+            //fw.write("test");
             fw.write(fileAppointments.get(i).write());
         }
         fw.close();
@@ -397,11 +408,11 @@ public class DataManager {
         //loop and re-add data
         FileWriter fw = new FileWriter(currFile);
         fw.write(header);
-        fw.write(System.lineSeparator());
+        //fw.write(System.lineSeparator());
         for (int i=0;i<fileWS.size();i++){
-            //fw.write(System.lineSeparator());
-            fw.write(fileWS.get(i).write());
             fw.write(System.lineSeparator());
+            fw.write(fileWS.get(i).write());
+            //fw.write(System.lineSeparator());
         }
         
         fw.close();
