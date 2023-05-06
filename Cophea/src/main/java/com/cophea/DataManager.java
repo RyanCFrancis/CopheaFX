@@ -2,12 +2,14 @@ package com.cophea;
 
 import java.util.ArrayList;
 import java.io.File;
-import java.util.Scanner; 
+import java.util.Scanner;
+
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class DataManager {
+    //TODO APPOINTMENT ID NUMBERS
 
 
     public static Boolean loadPatientLogin(String loginString,String pwString) throws FileNotFoundException{
@@ -144,7 +146,6 @@ public class DataManager {
 		String wsPath = partialPath+id;
 		File currFile = new File(wsPath+"_appts.csv");
 
-			
         //if file doesnt exist, intialize it
 			if (!currFile.isFile()){
 				System.out.println("NEW FILE BEING MADE");
@@ -159,7 +160,58 @@ public class DataManager {
 			FileWriter fw = new FileWriter(currFile,true);
 			fw.write(appo.write());
 			fw.close();
-		
+    }
+
+    public static void deleteAppointment(Person person,Appointment appo) throws FileNotFoundException{
+        String id = person.getId();
+		String partialPath = "Cophea/src/main/resources/com/cophea/appt/";
+		String wsPath = partialPath+id;
+		File currFile = new File(wsPath+"_appts.csv");
+        Scanner scan = new Scanner(currFile);
+        String[] lineValues = new String[9];
+		String line = scan.nextLine();
+        lineValues = line.split(",");
+        Appointment tempAppo;
+
+        ArrayList<String> fileLines = new ArrayList<String>();
+        fileLines.add(scan.nextLine());
+
+        //TODO IF PATIENT, DELETE FROM THEIRS THEN GO TO DOCOTOR
+        //TODO IF DOCTOR DELTE IN DOCTOR THEN PATIENT
+        
+
+
+        
+        while (scan.hasNext()){
+            lineValues = scan.nextLine().split(",");
+            if (person.isPatient()){
+                tempAppo = new Appointment(appo.getProvider(),(Patient) person, appo.getSlot());
+                //if the appointment exists, skip that line so it is not included int the file
+                if (appo.equals(tempAppo)){
+                    scan.nextLine();
+                }
+            }
+            
+            else {
+                tempAppo = new Appointment((Employee) person,appo.getPatient(),appo.getSlot());
+                //if the appointment exists, skip that line so it is not included int the file
+                if (appo.equals(tempAppo)){
+                    scan.nextLine();
+                }
+            }
+        }
+
+
+    
+        //if the person is a patient, delete from the doctors database
+        if (person.isPatient()){
+            DataManager.deleteAppointment(appo.getProvider(), appo);
+        }
+        //if the person is a doctor, delete the appointment from the patients database
+        else {
+            DataManager.deleteAppointment(appo.getPatient(), appo);
+        }
+        
 
     }
 
