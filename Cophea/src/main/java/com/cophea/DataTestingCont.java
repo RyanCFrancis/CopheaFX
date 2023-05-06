@@ -43,11 +43,10 @@ public class DataTestingCont implements Initializable{
     @FXML
     public  void initialize(URL u,ResourceBundle r) {
         try {
-            currEmployee = DataManager.loadEmployee("2");
+            currEmployee = DataManager.getEmployee("2");
             DataManager.loadAppts(currEmployee);
             DataManager.loadWorkSlots(currEmployee);
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -63,13 +62,13 @@ public class DataTestingCont implements Initializable{
     @FXML
     public void v2func() throws FileNotFoundException, IOException{
         System.out.println("v2 going");
-        DataManager.writeAppointment(currEmployee, new Appointment(currEmployee, DataManager.loadPatient("0"), new TimeSlot(2023, 5, 9, 9)));
+        DataManager.writeAppointment(currEmployee, new Appointment(currEmployee, DataManager.getPatient("0"), new TimeSlot(2023, 5, 9, 9)));
     }
 
     @FXML
     public void v3func() throws FileNotFoundException, IOException{
         System.out.println("v3 going");
-        DataManager.deleteAppointment(new Appointment(currEmployee, DataManager.loadPatient("0"), new TimeSlot(2023, 5, 9, 9)));
+        //DataManager.deleteAppointment(new Appointment(currEmployee, DataManager.getPatient("0"), new TimeSlot(2023, 5, 9, 9)));
         DataManager.deleteWorkSlot(currEmployee, new TimeSlot(2023, 5, 9, 9));
     }
     

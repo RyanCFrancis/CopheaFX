@@ -73,7 +73,7 @@ public class Appointment implements Comparable<Appointment> {
 		boolean patVal = this.getPatient().equals(b.getPatient());
 		boolean empVal = this.getProvider().equals(b.getProvider());
 		
-		if (patVal && timeVal == 0) {return true;}
+		if (patVal && empVal && timeVal == 0) {return true;}
 		return false;
 	}
 
