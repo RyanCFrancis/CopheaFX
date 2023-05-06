@@ -162,8 +162,10 @@ public class DataManager {
 			fw.close();
     }
 
-    public static void deleteAppointment(Person person,Appointment appo) throws FileNotFoundException{
-        String id = person.getId();
+    //there is no situation where an appointment is cancelled only for the doctor or patient
+    //in order to avvoid a infinite recursive loop, the function will delete from the doctors file first, then the patient
+    public static void deleteAppointment(Employee emp,Appointment appo) throws IOException{
+        String id = emp.getId();
 		String partialPath = "Cophea/src/main/resources/com/cophea/appt/";
 		String wsPath = partialPath+id;
 		File currFile = new File(wsPath+"_appts.csv");
@@ -172,47 +174,79 @@ public class DataManager {
 		String line = scan.nextLine();
         lineValues = line.split(",");
         Appointment tempAppo;
+        String header = scan.nextLine();
 
-        ArrayList<String> fileLines = new ArrayList<String>();
-        fileLines.add(scan.nextLine());
+        ArrayList<Appointment> fileAppointments = new ArrayList<Appointment>();
+        
 
         //TODO IF PATIENT, DELETE FROM THEIRS THEN GO TO DOCOTOR
         //TODO IF DOCTOR DELTE IN DOCTOR THEN PATIENT
         
 
 
-        
+        //loop to load the tempfile array with everything EXCEPT what we dont want to keep
         while (scan.hasNext()){
-            lineValues = scan.nextLine().split(",");
-            if (person.isPatient()){
-                tempAppo = new Appointment(appo.getProvider(),(Patient) person, appo.getSlot());
-                //if the appointment exists, skip that line so it is not included int the file
-                if (appo.equals(tempAppo)){
-                    scan.nextLine();
-                }
+            //lineValues = scan.nextLine().split(",");
+           
+            tempAppo = new Appointment(emp,appo.getPatient(), appo.getSlot());
+            //if the appointment exists, skip that line so it is not included int the file
+            if (appo.equals(tempAppo)){
+                scan.nextLine();
             }
-            
             else {
-                tempAppo = new Appointment((Employee) person,appo.getPatient(),appo.getSlot());
-                //if the appointment exists, skip that line so it is not included int the file
-                if (appo.equals(tempAppo)){
-                    scan.nextLine();
-                }
+                fileAppointments.add(tempAppo);
             }
         }
 
+        //empty out the files contents
+        new FileWriter(currFile,false).close();
 
-    
-        //if the person is a patient, delete from the doctors database
-        if (person.isPatient()){
-            DataManager.deleteAppointment(appo.getProvider(), appo);
+        //loop and re-add data
+        FileWriter fw = new FileWriter(currFile);
+        fw.write(header);
+        for (int i=0;i<fileAppointments.size();i++){
+            fw.write(fileAppointments.get(i).write());
         }
-        //if the person is a doctor, delete the appointment from the patients database
-        else {
-            DataManager.deleteAppointment(appo.getPatient(), appo);
-        }
+        fw.close();
+        scan.close();
         
 
+        //NOW perform the algo on the patient in the appointment
+        id = appo.getProvider().getId();
+		partialPath = "Cophea/src/main/resources/com/cophea/appt/";
+		wsPath = partialPath+id;
+		currFile = new File(wsPath+"_appts.csv");
+        scan = new Scanner(currFile);
+        lineValues = new String[9];
+		line = scan.nextLine();
+        lineValues = line.split(",");
+        header = scan.nextLine();
+        fileAppointments = new ArrayList<Appointment>();
+
+        while (scan.hasNext()){
+            //lineValues = scan.nextLine().split(",");
+           
+            tempAppo = new Appointment(appo.getProvider(),appo.getPatient(), appo.getSlot());
+            //if the appointment exists, skip that line so it is not included int the file
+            if (appo.equals(tempAppo)){
+                scan.nextLine();
+            }
+            else {
+                fileAppointments.add(tempAppo);
+            }
+        }
+
+        //empty out the files contents
+        new FileWriter(currFile,false).close();
+
+        //loop and re-add data
+        fw = new FileWriter(currFile);
+        fw.write(header);
+        for (int i=0;i<fileAppointments.size();i++){
+            fw.write(fileAppointments.get(i).write());
+        }
+        fw.close();
+        scan.close();
     }
 
     public static void writeWorkSlot(Employee emp,TimeSlot TS) throws IOException{
