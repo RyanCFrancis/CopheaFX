@@ -43,6 +43,14 @@ public class PatientMenuController implements Initializable{
 		    StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
 		    StageManager.getInstance().getStage().show();
         }
+        if (optModifyAppt.isSelected()) {
+            StageManager.getInstance().getStage().hide();
+            StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrModifyAppt.fxml")));
+            StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
+		    StageManager.getInstance().getStage().setTitle("Cophea");
+		    StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
+		    StageManager.getInstance().getStage().show();
+        }
     }
 
     @FXML

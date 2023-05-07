@@ -17,7 +17,14 @@ public class StageManager {
     private Person User;
     private Employee currEmployee;
     private TimeSlot currTimeSlot;
+    private Appointment currApp;
 
+    public Appointment getCurrApp() {
+        return currApp;
+    }
+    public void setCurrApp(Appointment currAppo) {
+        this.currApp = currAppo;
+    }
     public TimeSlot getCurrTimeSlot() {
         return currTimeSlot;
     }
