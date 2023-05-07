@@ -51,6 +51,7 @@ public class DataManager {
 
     }
 
+
     public static Patient getPatient(String id) throws FileNotFoundException{
         File people = new File("Cophea/src/main/resources/com/cophea/test.csv");
         Scanner scan = new Scanner(people);
@@ -73,7 +74,30 @@ public class DataManager {
         scan.close();
         return null;
     }
-
+    public static ArrayList<Employee> getAllEmployees() throws FileNotFoundException{
+        ArrayList<Employee> emps = new ArrayList<Employee>();
+        File people = new File("Cophea/src/main/resources/com/cophea/test.csv");
+        Scanner scan = new Scanner(people);
+        String line;
+        String[] lineValues = new String[9];
+        //skip headers
+        scan.nextLine();
+        while (scan.hasNext()){
+            line = scan.nextLine();
+            lineValues = line.split(",");
+            if (lineValues[5].equals("false")){
+                emps.add(new Employee(lineValues[0],
+                lineValues[1],
+                lineValues[2],
+                lineValues[3],
+                lineValues[4],
+                lineValues[5]
+                ));
+            }
+        }
+        scan.close();
+        return emps;
+    }
 
     public static Employee getEmployee(String id) throws FileNotFoundException{
         File people = new File("Cophea/src/main/resources/com/cophea/test.csv");

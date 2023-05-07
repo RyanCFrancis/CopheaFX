@@ -19,13 +19,33 @@ public class StageManager {
     private static StageManager instance = null;
     public static synchronized StageManager getInstance(){
         if (instance == null){instance = new StageManager();}
-            
-  
         return instance;
     }
     private Stage stage;
     private Parent parent;
     private Scene scene;
+    private Person User;
+    private Employee currEmployee;
+    private TimeSlot currTimeSlot;
+
+    public TimeSlot getCurrTimeSlot() {
+        return currTimeSlot;
+    }
+    public void setCurrTimeSlot(TimeSlot currTimeSlot) {
+        this.currTimeSlot = currTimeSlot;
+    }
+    public Person getUser() {
+        return User;
+    }
+    public void setUser(Person user) {
+        User = user;
+    }
+    public Employee getCurrEmployee() {
+        return currEmployee;
+    }
+    public void setCurrEmployee(Employee currEmployee) {
+        this.currEmployee = currEmployee;
+    }
     public Stage getStage() {
         return stage;
     }
@@ -44,6 +64,8 @@ public class StageManager {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
+
+
   
 
 }

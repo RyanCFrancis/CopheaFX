@@ -135,7 +135,7 @@ public class App extends Application {
 	//pick weekly schedule not specific dates
 	
 
-	public static void fileFun() throws IOException {
+	public static void fileTesting() throws IOException {
 		//System.out.println("here we go!");
 		File peepsFile = new File("Cophea/src/main/resources/com/cophea/test.csv");
 		Scanner scan = new Scanner(peepsFile);

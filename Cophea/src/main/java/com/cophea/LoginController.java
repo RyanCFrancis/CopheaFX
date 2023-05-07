@@ -14,15 +14,13 @@ import javafx.scene.control.TextField;
 
 public class LoginController implements Initializable {
 
-    private static LoginController instance;
+    
     private int attempts;
     private Boolean LoggedIn = false;
     
 
 
-    public static synchronized LoginController getInstance(){
-        return instance = new LoginController();
-    }
+    
 
    
 
@@ -35,7 +33,6 @@ public class LoginController implements Initializable {
 
 
     public void initialize(URL u,ResourceBundle r) {
-        PatientMenuController PMC = PatientMenuController.getInstance();
         attempts = 0;
     }
 
@@ -52,8 +49,11 @@ public class LoginController implements Initializable {
         }
         else {
             //go to the menu
+            //TODO CHANGE TO ACCOMODATE BOTH LOGINS
+            Person person = DataManager.getPatient(check);
             this.LoggedIn = true;
             System.out.println("here");
+            StageManager.getInstance().setUser(person);
             StageManager.getInstance().getStage().hide();
             StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrMenu.fxml")));
             StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));

@@ -1,5 +1,5 @@
 id,fname,lname,login,pass,isPatient,role,conditions
-0,dog,woof,dog101,ilovecats,true
+0,dog,woof,d,i,true
 1,dog,woof,dog102,ilovecats,true
 2,dog,woof,dog103,ilovecats,false,Doctor,COVID/FLU/BROKEN FOOT
 3,dog,woof,dog104,ilovecats,true
