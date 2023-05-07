@@ -2,8 +2,10 @@ package com.cophea;
 
 //import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 //import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 //import javafx.scene.Parent;
@@ -25,9 +27,6 @@ import java.util.ResourceBundle;
 //import javafx.event.ActionEvent;
 //import javafx.event.EventHandler;
 
-import java.io.File;
-import java.util.Scanner; 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ScheduleController implements Initializable {
@@ -216,7 +215,7 @@ public class ScheduleController implements Initializable {
         // lineValues = line.split(",");
         // currEmployee = new Employee(lineValues[0], lineValues[1], lineValues[2], lineValues[3],lineValues[4],lineValues[7]);
         
-        currEmployee = DataManager.getEmployee("8");
+        currEmployee = StageManager.getInstance().getCurrEmployee();
         DataManager.loadAppts(currEmployee);
         DataManager.loadWorkSlots(currEmployee);
         //scan.close();
@@ -258,12 +257,20 @@ public class ScheduleController implements Initializable {
     }
 
     @FXML
-    public void continuebtn(){
+    public void continuebtn() throws IOException{
    
         for (int z=0;z<buttons.length;z++){
            // System.out.println(z+" "+buttons[z].isSelected());
             if(buttons[z].isSelected()){
-                System.out.println("the picked slot is:"+currentSlots[z]);
+                TimeSlot pickedSlot = currentSlots[z];
+                StageManager.getInstance().setCurrTimeSlot(pickedSlot);
+
+                StageManager.getInstance().getStage().hide();
+                StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml")));
+                StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
+                StageManager.getInstance().getStage().setTitle("Cophea");
+                StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
+                StageManager.getInstance().getStage().show();
             }
         }
         
