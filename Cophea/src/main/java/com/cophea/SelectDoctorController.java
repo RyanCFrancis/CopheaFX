@@ -31,8 +31,7 @@ public class SelectDoctorController implements Initializable {
         try {
             emps = DataManager.getAllEmployees();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         //load the names into an observable list for the listview to access
         ObservableList<String> names = FXCollections.observableArrayList();

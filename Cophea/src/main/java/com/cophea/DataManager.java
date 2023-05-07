@@ -138,7 +138,8 @@ public class DataManager {
 
         //skip line with headers
         while(scan.hasNext()){
-            lineValues = scan.nextLine().split(",");
+            line = scan.nextLine();
+            lineValues = line.split(",");
             //System.out.println(lineValues);
             Employee e = DataManager.getEmployee(lineValues[0]);
             Patient pat = DataManager.getPatient(lineValues[1]);

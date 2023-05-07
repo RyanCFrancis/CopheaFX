@@ -38,13 +38,14 @@ public class LoginController implements Initializable {
 
     @FXML
     public void loginCheck() throws IOException{
+        attempts++;
         String use = txtUser.getText();
         String pw = txtPass.getText();
         String check = DataManager.loadPersonLogin(use, pw);
-        if (attempts>3){System.exit(69);}
+        if (attempts>2){System.exit(69);}
         if (check.equals("fail")){
             System.out.println("failed login");
-            attempts++;
+            
             this.LoggedIn = false;
         }
         else {
@@ -62,5 +63,10 @@ public class LoginController implements Initializable {
 		    StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
 		    StageManager.getInstance().getStage().show();
         }
+    }
+
+    @FXML
+    public void exitBtn(){
+        System.exit(420);
     }
 }

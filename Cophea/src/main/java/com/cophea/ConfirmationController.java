@@ -36,6 +36,4 @@ public class ConfirmationController implements Initializable {
         String emailString = txtEmail.getText();
         System.out.println("Tony Time");
     }
-
-    
 }

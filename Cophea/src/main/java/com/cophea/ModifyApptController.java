@@ -55,6 +55,7 @@ public class ModifyApptController implements Initializable {
         //System.out.println(names.get(0));
     }
 
+    //TODO if no apps, say u have none
     @FXML
     public void continueBtn() throws IOException{
         int pickedIndex = lstAppts.getSelectionModel().getSelectedIndex();
@@ -71,6 +72,7 @@ public class ModifyApptController implements Initializable {
         }
         if (optCancel.isSelected()){
             //TODO IDK MAKE A POPUP?
+            System.out.println("Your Appt was Deleted");
         }
 
         
