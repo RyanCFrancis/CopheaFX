@@ -266,7 +266,7 @@ public class ScheduleController implements Initializable {
                 StageManager.getInstance().setCurrTimeSlot(pickedSlot);
 
                 StageManager.getInstance().getStage().hide();
-                StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml")));
+                StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrConfirmation.fxml")));
                 StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
                 StageManager.getInstance().getStage().setTitle("Cophea");
                 StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());

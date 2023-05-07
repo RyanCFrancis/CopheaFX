@@ -40,7 +40,7 @@ public class App extends Application {
 		StageManager.getInstance().getStage().show();
     }
 	public static void main(String[] args) {
-        launch(args);	
+        launch(args);
 	}
 
 	// public void Login(Stage stage) throws IOException{
