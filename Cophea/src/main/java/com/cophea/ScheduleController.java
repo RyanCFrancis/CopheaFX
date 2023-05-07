@@ -263,6 +263,9 @@ public class ScheduleController implements Initializable {
            // System.out.println(z+" "+buttons[z].isSelected());
             if(buttons[z].isSelected()){
                 TimeSlot pickedSlot = currentSlots[z];
+                Appointment added = new Appointment(currEmployee,(Patient) StageManager.getInstance().getUser(), pickedSlot);
+                DataManager.writeAppointment(currEmployee, added);
+
                 StageManager.getInstance().setCurrTimeSlot(pickedSlot);
 
                 StageManager.getInstance().getStage().hide();

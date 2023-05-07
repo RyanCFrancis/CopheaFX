@@ -37,7 +37,9 @@ public class ModifyApptController implements Initializable {
         //get the doctors form the csv
         try {
             DataManager.loadAppts(StageManager.getInstance().getUser());
-           Appts = StageManager.getInstance().getUser().getAppointments();
+            System.out.println(StageManager.getInstance().getUser().getAppointments());
+            Appts = StageManager.getInstance().getUser().getAppointments();
+            System.out.println(Appts.toString());
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -50,6 +52,7 @@ public class ModifyApptController implements Initializable {
             names.add(apptLine);
         }
         lstAppts.setItems(names);
+        //System.out.println(names.get(0));
     }
 
     @FXML

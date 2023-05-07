@@ -137,7 +137,6 @@ public class DataManager {
         lineValues = line.split(",");
 
         //skip line with headers
-        scan.nextLine();
         while(scan.hasNext()){
             lineValues = scan.nextLine().split(",");
             //System.out.println(lineValues);
@@ -169,8 +168,7 @@ public class DataManager {
 		String line = scan.nextLine();
         lineValues = line.split(",");
 
-        //skip line with headers
-        scan.nextLine();
+
         while(scan.hasNext()){
             lineValues = scan.nextLine().split(",");
             emp.addSlot(new TimeSlot(
@@ -330,12 +328,12 @@ public class DataManager {
         
         /////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////
-        System.out.println("TOUCHING THE PATIENT");
-        System.out.println("TOUCHING THE PATIENT");
-        System.out.println("TOUCHING THE PATIENT");
-        System.out.println("TOUCHING THE PATIENT");
-        System.out.println("TOUCHING THE PATIENT");
-        System.out.println("TOUCHING THE PATIENT");
+        // System.out.println("TOUCHING THE PATIENT");
+        // System.out.println("TOUCHING THE PATIENT");
+        // System.out.println("TOUCHING THE PATIENT");
+        // System.out.println("TOUCHING THE PATIENT");
+        // System.out.println("TOUCHING THE PATIENT");
+        // System.out.println("TOUCHING THE PATIENT");
         //NOW perform the algo on the patient in the appointment
         id = appo.getPatient().getId();
 		partialPath = "Cophea/src/main/resources/com/cophea/appt/";

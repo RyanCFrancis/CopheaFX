@@ -50,10 +50,11 @@ public class LoginController implements Initializable {
         else {
             //go to the menu
             //TODO CHANGE TO ACCOMODATE BOTH LOGINS
-            Person person = DataManager.getPatient(check);
+            Patient pat = DataManager.getPatient(check);
+            DataManager.loadAppts(pat);
             this.LoggedIn = true;
             System.out.println("here");
-            StageManager.getInstance().setUser(person);
+            StageManager.getInstance().setUser(pat);
             StageManager.getInstance().getStage().hide();
             StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrMenu.fxml")));
             StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));

@@ -40,7 +40,7 @@
             <Insets right="100.0" />
          </GridPane.margin>
       </TextField>
-      <Button id="btn-Send" fx:id="btnSend" mnemonicParsing="false" text="Send" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Button id="btn-Send" fx:id="btnSend" mnemonicParsing="false" onAction="#sendBtn" text="Send" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font size="18.0" />
          </font>
