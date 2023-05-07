@@ -41,7 +41,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="btn-Exit" fx:id="btnExit" mnemonicParsing="false" text="Exit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Button id="btn-Exit" fx:id="btnExit" mnemonicParsing="false" onAction="#exitBtn" text="Exit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
