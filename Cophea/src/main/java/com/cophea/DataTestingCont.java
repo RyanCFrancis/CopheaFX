@@ -5,28 +5,12 @@ import javafx.fxml.FXML;
 //import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-//import javafx.scene.Parent;
-//import javafx.scene.Scene;
-//import javafx.stage.Stage;
-//import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-//import javafx.scene.control.Toggle;
-//import javafx.scene.control.ToggleGroup;
-
-//import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-//import java.util.List;
-import java.time.DayOfWeek;
 import java.net.URL;
 import java.util.ResourceBundle;
 //import javafx.collections.ObservableList;
 //import javafx.event.ActionEvent;
 //import javafx.event.EventHandler;
 
-import java.io.File;
-import java.util.Scanner; 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 public class DataTestingCont implements Initializable{

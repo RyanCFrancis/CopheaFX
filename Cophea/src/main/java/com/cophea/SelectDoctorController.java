@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
@@ -35,13 +37,21 @@ public class SelectDoctorController implements Initializable {
         //load the names into an observable list for the listview to access
         ObservableList<String> names = FXCollections.observableArrayList();
         for (int i=0;i<emps.size();i++){
-            names.add("Dr."+emps.get(i).getLname());
+            names.add(emps.get(i).getLname());
         }
         lstDoctors.setItems(names);
     }
 
     @FXML
     public void selectBtn() throws IOException{
-        System.out.println(lstDoctors.getSelectionModel().getSelectedItem());
+        int pickedIndex = lstDoctors.getSelectionModel().getSelectedIndex();
+        StageManager.getInstance().setCurrEmployee(emps.get(pickedIndex));
+
+        StageManager.getInstance().getStage().hide();
+        StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml")));
+        StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
+        StageManager.getInstance().getStage().setTitle("Cophea");
+        StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
+        StageManager.getInstance().getStage().show();
     }
 }

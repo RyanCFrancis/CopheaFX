@@ -1,31 +1,21 @@
 package com.cophea;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 //import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-//import javafx.scene.control.Label;
-//import javafx.scene.control.RadioButton;
+
 
 //import java.io.IOException;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner; 
-import java.lang.Math;
+import java.util.Scanner;
 
 //TODO FILESAVING CLASS AND LOADING FROM FILE
 //CONTROLLERS FOR THE OTHER SCREENS
@@ -41,7 +31,6 @@ public class App extends Application {
 		
 		
 		//Login(stage);
-
 		//f.t1();
 		StageManager.getInstance().setStage(stage);
 		StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
