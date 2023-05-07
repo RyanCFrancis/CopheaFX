@@ -1,11 +1,18 @@
 package com.cophea;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 //import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 //import javafx.scene.control.Label;
 //import javafx.scene.control.RadioButton;
 
@@ -27,19 +34,85 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //FXMLLoader loader = new FXMLLoader();
-        //Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml"));
 		//Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/dataTesting.fxml"));
-		Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml"));
-		ScheduleController sched = ScheduleController.getInstance();
-		LoginController LC = LoginController.getInstance();
+		StageManager.getInstance().setParent(parent);
+		//System.out.println(StageManager.getInstance().getParent());
 		
 		
+		//Login(stage);
+
 		//f.t1();
-		Scene scene = new Scene(parent);
-		stage.setTitle("Cophea");
-		stage.setScene(scene);
-		stage.show();
+		StageManager.getInstance().setStage(stage);
+		StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
+
+		StageManager.getInstance().getStage().setTitle("Cophea");
+		StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
+		StageManager.getInstance().getStage().show();
     }
+	public static void main(String[] args) {
+        launch(args);	
+	}
+
+	// public void Login(Stage stage) throws IOException{
+	// 	FXMLLoader loader = new FXMLLoader();
+	// 	Parent parent = loader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml"));
+
+	// 	TextField txtUser = (TextField) loader.getNamespace().get("txtUser");
+	// 	PasswordField txtPass = (PasswordField) loader.getNamespace().get("txtPass");
+	// 	Button btnLogin = (Button) loader.getNamespace().get("btnLogin");
+	// 	int attempts = 0;
+
+	// 	Scene scene = new Scene(parent);
+	// 	stage.setTitle("Cophea");
+	// 	stage.setScene(scene);
+	// 	stage.show();
+
+	// 	btnLogin.setOnAction(new EventHandler<ActionEvent>() {
+
+	// 		@Override
+	// 		public void handle(ActionEvent arg0) {
+	// 			String use = txtUser.getText();
+	// 			String pw = txtPass.getText();
+	// 			String check = "";
+	// 			try {check = DataManager.loadPersonLogin(use, pw);}
+	// 			catch (Exception e){}
+				
+	// 			if (attempts>3){System.exit(69);}
+	// 			if (check.equals("fail")){
+	// 				System.out.println("failed login");
+	// 				//attempts++;
+	// 			}
+	// 			else {
+	// 				try {
+	// 					PatientMenu(stage);
+	// 				} catch (IOException e) {
+						
+	// 					e.printStackTrace();
+	// 				}
+	// 			}
+			
+	// 		}
+			
+	// 	});
+		
+
+	// 	//Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml"));
+		
+		
+
+	// }
+
+	// public void PatientMenu(Stage stage) throws IOException{
+	// 	stage = new Stage();
+	// 	Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrMenu.fxml"));
+	// 	Scene scene = new Scene(parent);
+	// 	PatientMenuController PMC = PatientMenuController.getInstance();
+
+	// 	stage.setTitle("Main Menu");
+	// 	stage.setScene(scene);
+	// 	stage.show();
+	// }
 
 	//ASK PROF
 	//NEED 2 TYPES OF PEOPLE?
@@ -60,33 +133,7 @@ public class App extends Application {
 	//view appointments
 	//changing schedule (cancelling apointments?)
 	//pick weekly schedule not specific dates
-	public static void main(String[] args) {
-		//ScheduleController sched = new ScheduleController();
-       	//scheduleTesting();
-		try {
-			//fileFun();
-		}
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-        launch(args);
-
-		// Employee dave = new Employee("dave","silverman","login","pw","Doctor");
-		// Patient p1 = new Patient("Ryan","F","user","pass");
-		// for (int i=1;i<20;i++){
-		// 	TimeSlot t = new TimeSlot(2023, 1, i, 14);
-		// 	if (t.getStart().getDayOfWeek() != DayOfWeek.SATURDAY && t.getStart().getDayOfWeek() != DayOfWeek.SUNDAY){
-		// 		dave.addSlot(t);
-		// 	}
-		// }
-		// for (int i = 0; i < dave.getSlots().size(); i++) {
-		// 	if (i%2==0){
-		// 		dave.addAppointment(new Appointment(dave, p1, dave.getSlots().get(i)));
-		// 	}
-		// }
-		//sched.updateSchedule(dave, new TimeSlot(2023, 1, 2, 9));
-	}
+	
 
 	public static void fileFun() throws IOException {
 		//System.out.println("here we go!");
