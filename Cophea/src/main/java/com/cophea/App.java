@@ -126,7 +126,7 @@ public class App extends Application {
 
 	public static void fileTesting() throws IOException {
 		//System.out.println("here we go!");
-		File peepsFile = new File("Cophea/src/main/resources/com/cophea/test.csv");
+		File peepsFile = new File("Cophea/src/main/resources/com/cophea/people.csv");
 		Scanner scan = new Scanner(peepsFile);
 		//skip the line with the categories
 		scan.nextLine();

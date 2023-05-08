@@ -48,7 +48,7 @@ public class ModifyApptController implements Initializable {
         ObservableList<String> names = FXCollections.observableArrayList();
         for (int i=0;i<Appts.size();i++){
             String apptLine = "";
-            apptLine = Appts.get(i).getSlot().toString() +"with Dr."+Appts.get(i).getProvider().getLname();
+            apptLine = Appts.get(i).getSlot().toString() +" with Dr."+Appts.get(i).getProvider().getLname();
             names.add(apptLine);
         }
         lstAppts.setItems(names);

@@ -28,7 +28,7 @@ public class DataManager {
     //returns the persons id number if they successfully login, 
     //otherwise returns the string "fail"
     public static String loadPersonLogin(String loginString,String pwString) throws FileNotFoundException{
-        File people = new File("Cophea/src/main/resources/com/cophea/test.csv");
+        File people = new File("Cophea/src/main/resources/com/cophea/people.csv");
         Scanner scan = new Scanner(people);
         String tempLogin,tempPW,line;
         String[] lineValues = new String[9];
@@ -53,7 +53,7 @@ public class DataManager {
 
 
     public static Patient getPatient(String id) throws FileNotFoundException{
-        File people = new File("Cophea/src/main/resources/com/cophea/test.csv");
+        File people = new File("Cophea/src/main/resources/com/cophea/people.csv");
         Scanner scan = new Scanner(people);
         String line;
         String[] lineValues = new String[9];
@@ -76,7 +76,7 @@ public class DataManager {
     }
     public static ArrayList<Employee> getAllEmployees() throws FileNotFoundException{
         ArrayList<Employee> emps = new ArrayList<Employee>();
-        File people = new File("Cophea/src/main/resources/com/cophea/test.csv");
+        File people = new File("Cophea/src/main/resources/com/cophea/people.csv");
         Scanner scan = new Scanner(people);
         String line;
         String[] lineValues = new String[9];
@@ -100,7 +100,7 @@ public class DataManager {
     }
 
     public static Employee getEmployee(String id) throws FileNotFoundException{
-        File people = new File("Cophea/src/main/resources/com/cophea/test.csv");
+        File people = new File("Cophea/src/main/resources/com/cophea/people.csv");
         Scanner scan = new Scanner(people);
         String line;
         String[] lineValues = new String[9];
