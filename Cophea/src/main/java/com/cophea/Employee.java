@@ -24,6 +24,15 @@ public class Employee extends Person {
 		this.conditions = new ArrayList<String>();
 		this.role = role;
 	}
+	public Employee(String i,String f,String l, String login, String password,  String role,String[] con) {
+		super(i,f,l, login, password, false);
+		this.workSlots = new ArrayList<TimeSlot>();
+		this.conditions = new ArrayList<String>();
+		this.role = role;
+		for (int w = 0;w<con.length;w++){
+			this.conditions.add(con[w]);
+		}
+	}
 	public void addCondition(String c){
 		this.conditions.add(c);
 	}

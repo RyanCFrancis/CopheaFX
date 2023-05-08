@@ -5,6 +5,8 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class StageManager {
@@ -110,7 +112,15 @@ public class StageManager {
         StageManager.getInstance().getStage().show();
     }
 
-    public void goToPickDoctor() throws IOException{
+    public void goToPickDoctorAppt() throws IOException{
+        StageManager.getInstance().getStage().hide();
+        StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrSelectDoctor.fxml")));
+        StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
+        StageManager.getInstance().getStage().setTitle("Cophea");
+        StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
+        StageManager.getInstance().getStage().show();
+    }
+    public void goToPickDoctorInfo() throws IOException{
         StageManager.getInstance().getStage().hide();
         StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrSelectDoctor.fxml")));
         StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
@@ -119,6 +129,13 @@ public class StageManager {
         StageManager.getInstance().getStage().show();
     }
 
+    public void PopupError(String title,String content){
+        Alert a = new Alert(AlertType.ERROR);
+        a.setTitle(title);
+        a.setContentText(content);
+        a.show();
+
+    }
   
 
 }

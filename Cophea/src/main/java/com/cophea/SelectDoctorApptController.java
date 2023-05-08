@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-public class SelectDoctorController implements Initializable {
+public class SelectDoctorApptController implements Initializable {
     
     @FXML
     Button btnSelect;
@@ -31,7 +31,7 @@ public class SelectDoctorController implements Initializable {
         try {
             emps = DataManager.getAllEmployees();
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            StageManager.getInstance().PopupError("System Error",e.getMessage());
         }
         //load the names into an observable list for the listview to access
         ObservableList<String> names = FXCollections.observableArrayList();
@@ -44,6 +44,10 @@ public class SelectDoctorController implements Initializable {
     @FXML
     public void selectBtn() throws IOException{
         int pickedIndex = lstDoctors.getSelectionModel().getSelectedIndex();
+        if (pickedIndex == -1){
+            StageManager.getInstance().PopupError("Please Pick a Doctor", "You did not pick a doctor");
+            return;
+        }
         StageManager.getInstance().setCurrEmployee(emps.get(pickedIndex));
 
         StageManager.getInstance().goToPickAppt();

@@ -16,8 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-//TODO FILESAVING CLASS AND LOADING FROM FILE
-//CONTROLLERS FOR THE OTHER SCREENS
+
 
 public class App extends Application {
     @Override
@@ -26,7 +25,6 @@ public class App extends Application {
 		//Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/dataTesting.fxml"));
 		
 		//System.out.println(StageManager.getInstance().getParent());
-		
 		
 		//Login(stage);
 		//f.t1();
@@ -43,6 +41,13 @@ public class App extends Application {
 	public static void main(String[] args) {
         launch(args);
 	}
+
+	//TODO CANCEL SCREEN
+	//TODO DOCTOR LIST SCREEN,
+	//TODO DOCTOR DETAILS SCREEN
+	//TODO REFRESH SCREENS graphics
+	
+	
 
 	// public void Login(Stage stage) throws IOException{
 	// 	FXMLLoader loader = new FXMLLoader();

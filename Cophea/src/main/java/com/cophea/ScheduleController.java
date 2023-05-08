@@ -291,7 +291,7 @@ public class ScheduleController implements Initializable {
 
     @FXML
     public void goBack() throws IOException{
-        StageManager.getInstance().goToPickDoctor();
+        StageManager.getInstance().goToPickDoctorAppt();
     }
     
     

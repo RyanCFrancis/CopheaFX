@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
+import javafx.stage.Stage;
 
 public class PatientMenuController implements Initializable{
     
@@ -34,16 +35,20 @@ public class PatientMenuController implements Initializable{
     public void continueBtn() throws IOException{
         if (optScheduleAppt.isSelected()){
             //look at list of doctors to pick
-            StageManager.getInstance().goToPickDoctor();
-            
+            StageManager.getInstance().goToPickDoctorAppt();
         }
-        if (optModifyAppt.isSelected()) {
+        else if (optModifyAppt.isSelected()) {
             StageManager.getInstance().goToModifyAppts();
         }
 
-        if (optViewDoctors.isSelected()){
-            StageManager.getInstance().goToDoctorInfo();
+        else if (optViewDoctors.isSelected()){
+            //StageManager.getInstance().goTPickDoctorInfo();
+            //TODO DOCTOR PICK SCREEN TO SEE MORE INFO
         }
+        else {
+            StageManager.getInstance().PopupError("No Choice Picked", "Make sure to pick an option");
+        }
+        
     }
 
     @FXML

@@ -80,18 +80,21 @@ public class DataManager {
         Scanner scan = new Scanner(people);
         String line;
         String[] lineValues = new String[9];
+        String[] conds = new String[20];
         //skip headers
         scan.nextLine();
         while (scan.hasNext()){
             line = scan.nextLine();
             lineValues = line.split(",");
+            conds = lineValues[6].split("/");
             if (lineValues[5].equals("false")){
                 emps.add(new Employee(lineValues[0],
                 lineValues[1],
                 lineValues[2],
                 lineValues[3],
                 lineValues[4],
-                lineValues[5]
+                lineValues[5],
+                conds
                 ));
             }
         }
@@ -104,11 +107,13 @@ public class DataManager {
         Scanner scan = new Scanner(people);
         String line;
         String[] lineValues = new String[9];
+        String[] conds = new String[20];
         //skip headers
         scan.nextLine();
         while(scan.hasNext()){
             line = scan.nextLine();
             lineValues = line.split(",");
+            conds = lineValues[6].split("/");
             if (lineValues[0].equals(id)){
                 scan.close();
                 return new Employee(lineValues[0],
@@ -116,7 +121,8 @@ public class DataManager {
                 lineValues[2],
                 lineValues[3],
                 lineValues[4],
-                lineValues[5]
+                lineValues[5],
+                conds
                 );
             }
         }
