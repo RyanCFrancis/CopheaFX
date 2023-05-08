@@ -3,7 +3,6 @@ package com.cophea;
 import javafx.application.Application;
 //import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -24,18 +23,20 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //FXMLLoader loader = new FXMLLoader();
-        Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml"));
 		//Parent parent = FXMLLoader.load(getClass().getResource("/com/cophea/dataTesting.fxml"));
-		StageManager.getInstance().setParent(parent);
+		
 		//System.out.println(StageManager.getInstance().getParent());
 		
 		
 		//Login(stage);
 		//f.t1();
+
+		//manually go to login page so the stage object is set
+		StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml")));
 		StageManager.getInstance().setStage(stage);
 		StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
 
-		StageManager.getInstance().getStage().setTitle("Cophea");
+		StageManager.getInstance().getStage().setTitle("Cophea Login");
 		StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
 		StageManager.getInstance().getStage().show();
     }

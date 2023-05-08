@@ -1,9 +1,6 @@
 package com.cophea;
 
-import java.util.ArrayList;
-
 public class Appointment implements Comparable<Appointment> {
-	private String id;
 	//MAKING JUST 1 DOCTOR PER APPOINTMENT
 	private Employee provider;
 	private Patient patient;
@@ -19,13 +16,11 @@ public class Appointment implements Comparable<Appointment> {
 	public Appointment(Employee e,Patient p,TimeSlot ts) {
 		//this.providers = new ArrayList<Employee>();
 		//this.providers.add(e);
-		this.provider=e;
+		this.provider = e;
 		this.patient = p;
 		this.slot = ts;
 		
 	}
-	
-
 	
 	public Employee getProvider() {
 		return provider;

@@ -12,7 +12,7 @@ import java.io.IOException;
 //DONT NEED NEW LINE
 
 public class DataManager {
-    //TODO APPOINTMENT ID NUMBERS
+    
 
     public static void updatePerson(Person pers) throws FileNotFoundException{
         if (!pers.isPatient()){

@@ -152,11 +152,11 @@ public class ScheduleController implements Initializable {
     private TimeSlot[] currentSlots;
     
     
-    private static ScheduleController instance;
+    // private static ScheduleController instance;
 
-    public static synchronized ScheduleController getInstance(){
-        return instance = new ScheduleController();
-    }
+    // public static synchronized ScheduleController getInstance(){
+    //     return instance = new ScheduleController();
+    // }
 
     @FXML
     public void initialize(URL u, ResourceBundle r){
@@ -287,6 +287,11 @@ public class ScheduleController implements Initializable {
     public void prevWeekBtn(){
         nearestMonday = nearestMonday.prevWeek();
         this.updateSchedule(nearestMonday);
+    }
+
+    @FXML
+    public void goBack() throws IOException{
+        StageManager.getInstance().goToPickDoctor();
     }
     
     

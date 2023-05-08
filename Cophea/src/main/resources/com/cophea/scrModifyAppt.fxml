@@ -37,7 +37,7 @@
          </GridPane.margin>
       </Button>
       <ListView id="lst-Appts" fx:id="lstAppts" prefHeight="237.0" prefWidth="600.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <Button id="btn-GoBack" fx:id="btnGoBack" mnemonicParsing="false" text="Go Back" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button id="btn-GoBack" fx:id="btnGoBack" mnemonicParsing="false" onAction="#goBack" text="Go Back" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>

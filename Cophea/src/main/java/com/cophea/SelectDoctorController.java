@@ -46,11 +46,11 @@ public class SelectDoctorController implements Initializable {
         int pickedIndex = lstDoctors.getSelectionModel().getSelectedIndex();
         StageManager.getInstance().setCurrEmployee(emps.get(pickedIndex));
 
-        StageManager.getInstance().getStage().hide();
-        StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml")));
-        StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
-        StageManager.getInstance().getStage().setTitle("Cophea");
-        StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
-        StageManager.getInstance().getStage().show();
+        StageManager.getInstance().goToPickAppt();
+    }
+
+    @FXML
+    public void goBack() throws IOException{
+        StageManager.getInstance().goToPatientMenu();
     }
 }
