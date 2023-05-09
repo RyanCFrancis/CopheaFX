@@ -72,7 +72,7 @@
       </Button>
       <ImageView id="img-Logo" fitHeight="263.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <image>
-            <Image url="@Capture.PNG" />
+            <Image url="@CopheaLightBlueLogo.png" />
          </image>
       </ImageView>
    </children>
