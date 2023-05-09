@@ -49,7 +49,7 @@ public class App extends Application {
         launch(args);
 	}
 
-	//TODO CANCEL SCREEN
+	//TODO fix images and splash screen, and data
 	
 	
 	
