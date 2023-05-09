@@ -3,14 +3,12 @@ package com.cophea;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class StageManager {
 
