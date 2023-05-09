@@ -81,10 +81,13 @@ public class ModifyApptController implements Initializable {
             DataManager.deleteAppointment(Appts.get(pickedIndex));
             if (optChange.isSelected()){
                 StageManager.getInstance().setCurrEmployee(StageManager.getInstance().getCurrApp().getProvider());
+                StageManager.getInstance().goToPickAppt();
             }
             if (optCancel.isSelected()){
                 //TODO IDK MAKE A POPUP?
-                System.out.println("Your Appt was Deleted");
+                //System.out.println("Your Appt was Deleted");
+                StageManager.getInstance().PopupInfo("Appointment Cancelled", "Your Appointment was Cancelled!");
+                StageManager.getInstance().goToPatientMenu();
             }
         }
         else {

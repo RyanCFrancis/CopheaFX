@@ -164,6 +164,14 @@ public class StageManager {
         a.show();
 
     }
+
+    public void PopupInfo(String title,String content){
+        Alert a = new Alert(AlertType.ERROR);
+        a.setTitle(title);
+        a.setContentText(content);
+        a.show();
+
+    }
   
 
 }
