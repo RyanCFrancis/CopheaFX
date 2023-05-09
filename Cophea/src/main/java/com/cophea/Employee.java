@@ -52,7 +52,7 @@ public class Employee extends Person {
 		if (workSlots.contains(ts)) {workSlots.remove(ts);return;}
 		
 		//spit out an error or something
-		System.out.println("Error that doesnt exist");
+		System.out.println("Error that timeslot doesnt exist");
 	}
 
 	public ArrayList<TimeSlot> getSlots(){

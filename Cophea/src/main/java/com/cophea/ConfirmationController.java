@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+
+//import io.github.cdimascio.dotenv.Dotenv;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,11 +33,17 @@ public class ConfirmationController implements Initializable {
 
        txtConfirmation.setText("Your Appointment has been made!");
        txtDescription.setText("You have an Appointment with "+"Dr:"+Doctor.getFname()+" at "+AppoTime);
+
     }
 
     @FXML
     public void sendBtn() throws IOException{
         String emailString = txtEmail.getText();
         System.out.println("Tony Time");
+    }
+
+    @FXML
+    public void exitBtn() {
+        System.exit(0);
     }
 }

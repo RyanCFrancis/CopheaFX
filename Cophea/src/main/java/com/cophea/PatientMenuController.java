@@ -35,15 +35,14 @@ public class PatientMenuController implements Initializable{
     public void continueBtn() throws IOException{
         if (optScheduleAppt.isSelected()){
             //look at list of doctors to pick
-            StageManager.getInstance().goToPickDoctorAppt();
+            StageManager.getInstance().goToPickDoctor(true);
         }
         else if (optModifyAppt.isSelected()) {
             StageManager.getInstance().goToModifyAppts();
         }
 
         else if (optViewDoctors.isSelected()){
-            //StageManager.getInstance().goTPickDoctorInfo();
-            //TODO DOCTOR PICK SCREEN TO SEE MORE INFO
+            StageManager.getInstance().goToPickDoctor(false);
         }
         else {
             StageManager.getInstance().PopupError("No Choice Picked", "Make sure to pick an option");

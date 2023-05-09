@@ -29,23 +29,28 @@ public class App extends Application {
 		//Login(stage);
 		//f.t1();
 
-		//manually go to login page so the stage object is set
+		//manually go to splash screen
+		//StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrSplashv1.fxml")));
+
 		StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml")));
+
 		StageManager.getInstance().setStage(stage);
 		StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
 
-		StageManager.getInstance().getStage().setTitle("Cophea Login");
+		StageManager.getInstance().getStage().setTitle("Welcome");
 		StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
 		StageManager.getInstance().getStage().show();
+		
+		//StageManager.getInstance().Fade();
+
+		StageManager.getInstance().goToLogin();
     }
 	public static void main(String[] args) {
         launch(args);
 	}
 
 	//TODO CANCEL SCREEN
-	//TODO DOCTOR LIST SCREEN,
-	//TODO DOCTOR DETAILS SCREEN
-	//TODO REFRESH SCREENS graphics
+	
 	
 	
 

@@ -1,13 +1,16 @@
 package com.cophea;
 
 import java.io.IOException;
+import java.time.OffsetDateTime;
 
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class StageManager {
 
@@ -23,7 +26,14 @@ public class StageManager {
     private Employee currEmployee;
     private TimeSlot currTimeSlot;
     private Appointment currApp;
+    private boolean isPickingAppts;
 
+    public boolean isPickingAppts() {
+        return isPickingAppts;
+    }
+    public void setPickingAppts(boolean isPickingAppts) {
+        this.isPickingAppts = isPickingAppts;
+    }
     public Appointment getCurrApp() {
         return currApp;
     }
@@ -65,6 +75,30 @@ public class StageManager {
     }
     public void setScene(Scene scene) {
         this.scene = scene;
+    }
+
+    public void Fade() throws InterruptedException, IOException{
+
+
+
+
+        // FadeTransition introFade = new FadeTransition(Duration.seconds(0.8),StageManager.getInstance().getParent());  
+        // introFade.setFromValue(1.0);  
+        // introFade.setToValue(0.3); 
+        // introFade.setCycleCount(4); 
+        // introFade.setAutoReverse(true);
+        // introFade.play();
+        StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrSplashv1.fxml")));
+		StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
+
+
+        OffsetDateTime start = OffsetDateTime.now();
+        OffsetDateTime timer = OffsetDateTime.now();
+
+        while ((timer.toEpochSecond() - start.toEpochSecond())<2){
+            //do nothing lol
+            timer = OffsetDateTime.now();
+        }
     }
 
     public void goToLogin() throws IOException{
@@ -112,7 +146,8 @@ public class StageManager {
         StageManager.getInstance().getStage().show();
     }
 
-    public void goToPickDoctorAppt() throws IOException{
+    public void goToPickDoctor(boolean pickingappts) throws IOException{
+        if (pickingappts){this.isPickingAppts = true;}
         StageManager.getInstance().getStage().hide();
         StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrSelectDoctor.fxml")));
         StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
@@ -120,14 +155,7 @@ public class StageManager {
         StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
         StageManager.getInstance().getStage().show();
     }
-    public void goToPickDoctorInfo() throws IOException{
-        StageManager.getInstance().getStage().hide();
-        StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrSelectDoctor.fxml")));
-        StageManager.getInstance().setScene(new Scene(StageManager.getInstance().getParent()));
-        StageManager.getInstance().getStage().setTitle("Cophea");
-        StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
-        StageManager.getInstance().getStage().show();
-    }
+    
 
     public void PopupError(String title,String content){
         Alert a = new Alert(AlertType.ERROR);

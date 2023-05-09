@@ -48,12 +48,12 @@
             <Insets right="20.0" />
          </GridPane.margin>
       </Button>
-      <Button id="btn-Exit" fx:id="btnExit" mnemonicParsing="false" text="Exit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Button id="btn-Exit" fx:id="btnExit" mnemonicParsing="false" onAction="#exitBtn" text="Exit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField id="txt-Description" fx:id="txtConfirmation" alignment="CENTER" editable="false" GridPane.columnSpan="2">
+      <TextField id="txt-Confirmation" fx:id="txtConfirmation" alignment="CENTER" editable="false" GridPane.columnSpan="2">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>

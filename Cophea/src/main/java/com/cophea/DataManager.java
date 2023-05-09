@@ -42,7 +42,7 @@ public class DataManager {
 
             if (loginString.equals(tempLogin)&& pwString.equals(tempPW)){
                 scan.close();
-                System.out.println("hey there u logged in");
+                //System.out.println("hey there u logged in");
                 return lineValues[0];
             }
         }
@@ -86,16 +86,18 @@ public class DataManager {
         while (scan.hasNext()){
             line = scan.nextLine();
             lineValues = line.split(",");
-            conds = lineValues[6].split("/");
-            if (lineValues[5].equals("false")){
-                emps.add(new Employee(lineValues[0],
-                lineValues[1],
-                lineValues[2],
-                lineValues[3],
-                lineValues[4],
-                lineValues[5],
-                conds
-                ));
+            if (lineValues.length>6){
+                conds = lineValues[7].split("/");
+                if (lineValues[5].equals("false")){
+                    emps.add(new Employee(lineValues[0],
+                    lineValues[1],
+                    lineValues[2],
+                    lineValues[3],
+                    lineValues[4],
+                    lineValues[5],
+                    conds
+                    ));
+                }
             }
         }
         scan.close();
@@ -113,17 +115,21 @@ public class DataManager {
         while(scan.hasNext()){
             line = scan.nextLine();
             lineValues = line.split(",");
-            conds = lineValues[6].split("/");
-            if (lineValues[0].equals(id)){
-                scan.close();
-                return new Employee(lineValues[0],
-                lineValues[1],
-                lineValues[2],
-                lineValues[3],
-                lineValues[4],
-                lineValues[5],
-                conds
-                );
+            // System.out.println(lineValues.toString());
+            // System.out.println(lineValues.length);
+            if (lineValues.length>6){
+                conds = lineValues[7].split("/");
+                if (lineValues[0].equals(id)){
+                    scan.close();
+                    return new Employee(lineValues[0],
+                    lineValues[1],
+                    lineValues[2],
+                    lineValues[3],
+                    lineValues[4],
+                    lineValues[5],
+                    conds
+                    );
+                }
             }
         }
         scan.close();

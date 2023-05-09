@@ -291,7 +291,7 @@ public class ScheduleController implements Initializable {
 
     @FXML
     public void goBack() throws IOException{
-        StageManager.getInstance().goToPickDoctorAppt();
+        StageManager.getInstance().goToPickDoctor(true);
     }
     
     
@@ -339,10 +339,7 @@ public class ScheduleController implements Initializable {
         }
 
         
-        
 
-        
-        
         //System.out.println("hmm");
         if (TS.getStart().getDayOfWeek() != DayOfWeek.MONDAY){
             System.out.println("ERROR:NOT A MONDAY");
