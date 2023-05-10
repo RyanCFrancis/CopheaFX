@@ -3,12 +3,14 @@ package com.cophea;
 import java.util.ArrayList;
 
 public class Employee extends Person {
+
 	//examples are "Doctor","Nurse","Surgeon"
-	//TODO CONDITIONS PROPERLY IMPLEMENTED 
+	//UNUSED
 	private String role;
-	//coniditions they treat
+	//coniditions they treat such as "common cold" or "covid" or "broken bone"
+	//used for patients to see which doctor they should make an appointment with
 	private ArrayList<String> conditions;
-	//all timeslots the employee is working, whether they are occupied by an appointment or not
+	//all timeslot objects the employee is working, whether they are occupied by an appointment or not
 	private ArrayList<TimeSlot> workSlots;
 	
 	public Employee(String f,String l, String login, String password,  String role) {
