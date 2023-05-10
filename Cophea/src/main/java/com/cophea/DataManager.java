@@ -9,11 +9,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-//DONT NEED NEW LINE
 
 public class DataManager {
+    //this static class is used to manage and manipulate the database files in tandem with the java memory data
     
 
+    //given a person obj, update their appointments (and working hours) in the java memory
     public static void updatePerson(Person pers) throws FileNotFoundException{
         if (!pers.isPatient()){
             DataManager.loadWorkSlots((Employee) pers);
@@ -21,8 +22,6 @@ public class DataManager {
         DataManager.loadAppts(pers);
         
     }
-
-    
 
 
     //returns the persons id number if they successfully login, 
@@ -51,7 +50,7 @@ public class DataManager {
 
     }
 
-
+    //returns a patient object based ont he database data
     public static Patient getPatient(String id) throws FileNotFoundException{
         File people = new File("Cophea/src/main/resources/com/cophea/people.csv");
         Scanner scan = new Scanner(people);
@@ -74,6 +73,7 @@ public class DataManager {
         scan.close();
         return null;
     }
+    //returns all employees from the database so that the see available doctors screen can be made
     public static ArrayList<Employee> getAllEmployees() throws FileNotFoundException{
         ArrayList<Employee> emps = new ArrayList<Employee>();
         File people = new File("Cophea/src/main/resources/com/cophea/people.csv");
@@ -104,6 +104,7 @@ public class DataManager {
         return emps;
     }
 
+    //generates an employee object based on the database data
     public static Employee getEmployee(String id) throws FileNotFoundException{
         File people = new File("Cophea/src/main/resources/com/cophea/people.csv");
         Scanner scan = new Scanner(people);
@@ -136,7 +137,7 @@ public class DataManager {
         return null;
     }
 
-    //resets the person's appointments and loads from scratch
+    //resets the person's appointments and loads from the database from scratch
     public static void loadAppts(Person person) throws FileNotFoundException{
         person.getAppointments().clear();
         //System.out.println("running");
@@ -170,7 +171,7 @@ public class DataManager {
         
 
     }
-    //resets the person's working hours and loads from scratch
+    //resets the person's working hours and loads from the database from scratch
     public static void loadWorkSlots(Employee emp) throws FileNotFoundException{
         emp.getSlots().clear();
         
@@ -250,6 +251,8 @@ public class DataManager {
 
     //
 
+    //adds a timeslot object to the employees working hours so that
+    //it can be seen as available to the user
     public static void writeWorkSlot(Employee emp,TimeSlot TS) throws IOException{
         //System.out.println("am i working?");
         String id = emp.getId();
@@ -276,7 +279,8 @@ public class DataManager {
 
 
     //there is no situation where an appointment is cancelled only for the doctor or patient, but not the other
-    //in order to avvoid a infinite recursive loop, the function will delete from the doctors file first, then the patient
+    // so given the parameter of an appointment, we delete said appointment from the database files for both the patient and doctor
+
     public static void deleteAppointment(Appointment appo) throws IOException{
         Employee emp = appo.getProvider();
         String id = emp.getId();
@@ -310,7 +314,7 @@ public class DataManager {
                     Integer.parseInt(lineValues[4]),
                     Integer.parseInt(lineValues[5]))
             );
-            //if the appointment exists, skip that line so it is not included int the file
+            //if the appointment exists, skip that line so it is not included in the file
             if (appo.equals(tempAppo)){
                 if (scan.hasNext()){
                     scan.nextLine();
@@ -336,7 +340,7 @@ public class DataManager {
         }
         fw.close();
         scan.close();
-
+        //update the employee's java memory
         DataManager.updatePerson(emp);
         
         /////////////////////////////////////////////////////////
@@ -404,6 +408,8 @@ public class DataManager {
         DataManager.updatePerson(appo.getProvider());
     }
 
+    //deletes a timeslot obj from the employee's working hours
+    //if they have to cancel work for an emergency or someone's wedding
     public static void deleteWorkSlot(Employee emp,TimeSlot TS) throws IOException{
 
 

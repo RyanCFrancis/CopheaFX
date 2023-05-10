@@ -3,6 +3,7 @@ package com.cophea;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -16,16 +17,21 @@ import javafx.scene.control.RadioButton;
 
 public class ModifyApptController implements Initializable {
     
+    //the continue button
     @FXML
     Button btnSelect;
 
+    //toggle button to choose to change the appointment timing
     @FXML
     RadioButton optChange;
 
+    //cancel the appointment entirely
     @FXML
     RadioButton optCancel;
 
-    ArrayList<Appointment> Appts;
+    //appointments the user has
+    ArrayList<Appointment> upcomingAppts;
+    ArrayList<Appointment> tempAppts;
     ObservableList<String> names;
     boolean hasAppts;
 
@@ -37,16 +43,23 @@ public class ModifyApptController implements Initializable {
         //get the doctors form the csv
         try {
             DataManager.loadAppts(StageManager.getInstance().getUser());
-            //System.out.println(StageManager.getInstance().getUser().getAppointments());
-            Appts = StageManager.getInstance().getUser().getAppointments();
+            //loop through the database appointments and only add those that have not occured yet
+            tempAppts = StageManager.getInstance().getUser().getAppointments();
+
+            for (int p=0;p<tempAppts.size();p++){
+                TimeSlot today = new TimeSlot(OffsetDateTime.now());
+                if (today.compareTo(tempAppts.get(p).getSlot()) == -1){
+                    upcomingAppts.add(tempAppts.get(p));
+                }
+            }
             //System.out.println(Appts.toString());
         } catch (FileNotFoundException e) {System.out.println(e.getMessage());}
         
         //load the names into an observable list for the listview to access
         ObservableList<String> names = FXCollections.observableArrayList();
-        for (int i=0;i<Appts.size();i++){
+        for (int i=0;i<upcomingAppts.size();i++){
             String apptLine = "";
-            apptLine = Appts.get(i).getSlot().toString() +" with Dr."+Appts.get(i).getProvider().getLname();
+            apptLine = upcomingAppts.get(i).getSlot().toString() +" with Dr."+upcomingAppts.get(i).getProvider().getLname();
             if (apptLine.length()>0){
                 names.add(apptLine);
             }
@@ -77,8 +90,8 @@ public class ModifyApptController implements Initializable {
 
         if (hasAppts){
             int pickedIndex = lstAppts.getSelectionModel().getSelectedIndex();
-            StageManager.getInstance().setCurrApp(Appts.get(pickedIndex));
-            DataManager.deleteAppointment(Appts.get(pickedIndex));
+            StageManager.getInstance().setCurrApp(upcomingAppts.get(pickedIndex));
+            DataManager.deleteAppointment(upcomingAppts.get(pickedIndex));
             if (optChange.isSelected()){
                 StageManager.getInstance().setCurrEmployee(StageManager.getInstance().getCurrApp().getProvider());
                 StageManager.getInstance().goToPickAppt();

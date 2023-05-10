@@ -12,7 +12,17 @@ import javafx.stage.Stage;
 
 public class StageManager {
 
+
+    //Using the "singleton" design paradigm, this object is used for 2 reasons.
+    //for the different scenes to communicate and transfer data between each other
+    //and to actually change the scenes/ switch scenes
+
+    //this class is necessary because we setup each screen to have their own controller
+    //an alternative to this design was to make an object for each screen and create it in the main method
+
+    //a private static instance of the class is made so it is essentially "global" to all the screens
     private static StageManager instance = null;
+    //syncronized keyword is used to ensure only 1 obj of the class exists
     public static synchronized StageManager getInstance(){
         if (instance == null){instance = new StageManager();}
         return instance;
@@ -75,6 +85,8 @@ public class StageManager {
         this.scene = scene;
     }
 
+    //possible implementation to make a fading transition for the splash screen
+    //INCOMPLETE
     public void Fade() throws InterruptedException, IOException{
 
 
@@ -99,6 +111,7 @@ public class StageManager {
         }
     }
 
+    //goes to the login screen for the user
     public void goToLogin() throws IOException{
         StageManager.getInstance().getStage().hide();
         StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml")));
@@ -107,7 +120,7 @@ public class StageManager {
 		StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
 		StageManager.getInstance().getStage().show();
     }
-
+    //goes to the main menu the patient sees when they log in
     public void goToPatientMenu() throws IOException{
         StageManager.getInstance().getStage().hide();
         StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrMenu.fxml")));
@@ -116,7 +129,7 @@ public class StageManager {
         StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
         StageManager.getInstance().getStage().show();
     }
-
+    //goes to the modify appointments screen
     public void goToModifyAppts() throws IOException{
         StageManager.getInstance().getStage().hide();
         StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrModifyAppt.fxml")));
@@ -125,7 +138,7 @@ public class StageManager {
         StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
         StageManager.getInstance().getStage().show();
     }
-
+    //go to the doctor info screen to see what conditions the doctor treats
     public void goToDoctorInfo() throws IOException{
         StageManager.getInstance().getStage().hide();
         StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrDoctorInfo.fxml")));
@@ -134,7 +147,7 @@ public class StageManager {
         StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
         StageManager.getInstance().getStage().show();
     }
-
+    //go to the screen involving changing/editing already created appointments
     public void goToPickAppt() throws IOException{
         StageManager.getInstance().getStage().hide();
         StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrAppts.fxml")));
@@ -143,7 +156,9 @@ public class StageManager {
         StageManager.getInstance().getStage().setScene(StageManager.getInstance().getScene());
         StageManager.getInstance().getStage().show();
     }
-
+    //pick a doctor from a list, this screen is used to transition to both the main scheduling screen
+    //and the see mroe doctor info screen.
+    //if pickingappts is true it takes the user to the main scheduling screen later
     public void goToPickDoctor(boolean pickingappts) throws IOException{
         if (pickingappts){this.isPickingAppts = true;}
         StageManager.getInstance().getStage().hide();
@@ -154,7 +169,7 @@ public class StageManager {
         StageManager.getInstance().getStage().show();
     }
     
-
+    //function to streamline making popups on the screen
     public void PopupError(String title,String content){
         Alert a = new Alert(AlertType.ERROR);
         a.setTitle(title);
@@ -162,7 +177,7 @@ public class StageManager {
         a.show();
 
     }
-
+    //function to streamline making popups on the screen    
     public void PopupInfo(String title,String content){
         Alert a = new Alert(AlertType.ERROR);
         a.setTitle(title);

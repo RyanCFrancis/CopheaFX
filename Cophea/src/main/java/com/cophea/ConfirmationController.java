@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 
 
-//import io.github.cdimascio.dotenv.Dotenv;
+
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,14 +16,18 @@ import javafx.scene.control.TextField;
 
 public class ConfirmationController implements Initializable {
     
+    //button used to send the email after it is entered
     @FXML
     Button btnSend;
 
+    //title text
     @FXML
     TextField txtConfirmation;
+    //text for the email the yser enters
     @FXML
     TextField txtEmail;
 
+    //displays the appointment time and with which doctor
     @FXML
     TextArea txtDescription;
 
@@ -36,12 +40,13 @@ public class ConfirmationController implements Initializable {
 
     }
 
+    //incomplete, will send out email ot the user
     @FXML
     public void sendBtn() throws IOException{
         String emailString = txtEmail.getText();
         System.out.println("Tony Time");
     }
-
+    //exits the program
     @FXML
     public void exitBtn() {
         System.exit(0);

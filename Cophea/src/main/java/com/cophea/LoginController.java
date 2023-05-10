@@ -11,12 +11,14 @@ import javafx.scene.control.TextField;
 
 public class LoginController implements Initializable {
 
-    
+    //number of attempts the user has tried ot login
     private int attempts;
 
+    //username field
     @FXML
     TextField txtUser;
 
+    //password field
     @FXML
     PasswordField txtPass;
 
@@ -29,20 +31,21 @@ public class LoginController implements Initializable {
         attempts++;
         String use = txtUser.getText();
         String pw = txtPass.getText();
-        String check = DataManager.loadPersonLogin(use, pw);
+        String userID = DataManager.loadPersonLogin(use, pw);
         if (attempts>2){System.exit(69);}
-        if (check.equals("fail")){
-            System.out.println("failed login");
+        if (userID.equals("fail")){
+            StageManager.getInstance().PopupInfo("Login Failed", "Your password and username do not match, try again");
             
             
         }
         else {
             //go to the menu
             //TODO CHANGE TO ACCOMODATE BOTH LOGINS
-            Patient pat = DataManager.getPatient(check);
+            //load in the user data from the database files
+            Patient pat = DataManager.getPatient(userID);
             DataManager.loadAppts(pat);
             
-            //System.out.println("here");
+            //set the current user to the patient
             StageManager.getInstance().setUser(pat);
             StageManager.getInstance().goToPatientMenu();
             

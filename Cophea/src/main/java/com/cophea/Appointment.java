@@ -1,13 +1,15 @@
 package com.cophea;
 
 public class Appointment implements Comparable<Appointment> {
-	//MAKING JUST 1 DOCTOR PER APPOINTMENT
+	//the doctor obj helping the patient
 	private Employee provider;
+	//the patient obj being treated
 	private Patient patient;
+	//the time the appointment is happening
 	private TimeSlot slot;
 	
 	
-	
+	//UNUSED IN ACTUAL PRODUCTION
 	public Appointment() {
 		//blank constructor
 		//providers = new ArrayList<Employee>();
@@ -48,8 +50,8 @@ public class Appointment implements Comparable<Appointment> {
 		this.slot = slot;
 	}
 
+	//UNUSED?
 	//simply compares the appointment timing and if the patient is the same
-	//TODO SET UP PROPER SORTING?
 	public int compareTo(Appointment b) {
 		int timeVal = this.getSlot().compareTo(b.getSlot());
 		boolean patVal = this.getPatient().equals(b.getPatient());
@@ -60,7 +62,7 @@ public class Appointment implements Comparable<Appointment> {
 		}
 		return timeVal;
 	}
-	
+	//used to see if appointments already exist
 	@Override
 	public boolean equals(Object o) {
 		Appointment b = (Appointment) o;
@@ -79,7 +81,7 @@ public class Appointment implements Comparable<Appointment> {
 	public String toString(){
 		return(this.patient.getFname()+" "+this.slot);
 	}
-
+	//used to "write" the necessary appt data to the database files so it can be accessed later
 	public String write(){
 		return this.provider.getId()+","+this.getPatient().getId()+","+this.getSlot().write();
 	}

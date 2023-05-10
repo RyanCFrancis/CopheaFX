@@ -14,19 +14,24 @@ import javafx.scene.control.TextArea;
 
 public class DocInfoController implements Initializable {
     
+    //doctors name
     @FXML
     Label lblDoctor;
 
+    //conditions the doctor treats
     @FXML
     TextArea txtDescription;
 
+    //list of working hours that doctor is free
     @FXML
     TextArea txtAvailability;
 
     @FXML
     Button btnGoBack;
 
+    //current doctor
     Employee currDoctor;
+    //strings of the available timeslots
     ArrayList<String> availAppts;
 
     String condString = "Conditions they treat:";

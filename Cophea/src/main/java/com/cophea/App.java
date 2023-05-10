@@ -51,7 +51,7 @@ public class App extends Application {
         launch(args);
 	}
 
-	//TODO fix images and splash screen, and data
+	//TODO fix  and splash screen, and data
 	
 	
 	
