@@ -32,7 +32,7 @@ public class DocInfoController implements Initializable {
     //current doctor
     Employee currDoctor;
     //strings of the available timeslots
-    ArrayList<String> availAppts;
+    ArrayList<TimeSlot> availAppts;
 
     String condString = "Conditions they treat:";
     String avail = "Available Appointments:";
@@ -42,9 +42,10 @@ public class DocInfoController implements Initializable {
         try {
             DataManager.updatePerson(currDoctor);
         } catch (FileNotFoundException e) { }
-        this.availAppts = new ArrayList<String>();
+        this.availAppts = new ArrayList<TimeSlot>();
         //System.out.println(currDoctor.getSlots().size());
         //System.out.println(currDoctor.getConditions().get(1));
+
         //add ALL WORKSLOTS to the list to write out
         for (int i=0;i<currDoctor.getSlots().size();i++){
             //System.out.println("chaos");
@@ -53,8 +54,15 @@ public class DocInfoController implements Initializable {
                 Appointment currAppt = currDoctor.getAppointments().get(q);
                 //System.out.println("mayhem");
                 //if the timeslots do not overlap/ the doctor is not busy with an appointment, add the timeslot string to the list of avail appts
-                if (!currTimeSlot.equals(currAppt.getSlot())){
-                    availAppts.add(currTimeSlot.toString());
+                if (currTimeSlot.equals(currAppt.getSlot())){
+                    
+                    
+                }
+                else {
+                    if (!availAppts.contains(currTimeSlot)){
+                        availAppts.add(currTimeSlot);
+                    }
+                    
                 }
             }
             
