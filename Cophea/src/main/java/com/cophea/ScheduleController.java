@@ -371,7 +371,7 @@ public class ScheduleController implements Initializable {
 
                 //if the employee is working that hour, make the appointment available
                 if (TS.equals(currEmployee.getSlots().get(q))){
-                    buttons[i].setText("avail");
+                    buttons[i].setText("Available");
                     buttons[i].setDisable(false);
                 }
                 
@@ -384,7 +384,7 @@ public class ScheduleController implements Initializable {
                 //System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
                 if (activeApps.get(q).getSlot().equals(TS)){
                    //System.out.println("true");
-                   buttons[i].setText("BUSY2");
+                   buttons[i].setText("BUSY");
                    buttons[i].setDisable(true);
                 }
             }

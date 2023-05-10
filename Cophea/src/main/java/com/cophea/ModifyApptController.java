@@ -40,6 +40,7 @@ public class ModifyApptController implements Initializable {
 
     public void initialize(URL u,ResourceBundle r) {
         hasAppts = true;
+        upcomingAppts = new ArrayList<Appointment>();
         //get the doctors form the csv
         try {
             DataManager.loadAppts(StageManager.getInstance().getUser());

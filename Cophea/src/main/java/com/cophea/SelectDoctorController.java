@@ -36,7 +36,7 @@ public class SelectDoctorController implements Initializable {
         //load the names into an observable list for the listview to access
         ObservableList<String> names = FXCollections.observableArrayList();
         for (int i=0;i<emps.size();i++){
-            names.add(emps.get(i).getLname());
+            names.add("Dr."+emps.get(i).getLname());
         }
         lstDoctors.setItems(names);
     }
