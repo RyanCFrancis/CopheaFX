@@ -98,6 +98,9 @@ public class TimeSlot implements Comparable<TimeSlot> {
 	}
 	
 	//ONLY COMPARES THE START OF THE APPOINTMENT NOT THE ENDS
+	//returns 0 if they are both at the same time
+	//returns -1 if this timeslot occurs before the parameter timeslot
+	//returns +1 if this timeslot occurs affter the parameter timeslot
 	public int compareTo(TimeSlot b) {
 		boolean val;
 		// if = return 0
