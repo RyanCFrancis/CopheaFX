@@ -29,9 +29,11 @@ public class App extends Application {
 		//Login(stage);
 		//f.t1();
 
-		//manually go to splash screen
+	
 		//StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrSplashv1.fxml")));
 
+
+		//manually activate the gotoLogin() function to set the stage object to the StageManager
 		StageManager.getInstance().setParent(FXMLLoader.load(getClass().getResource("/com/cophea/scrLoginCOPHEA.fxml")));
 
 		StageManager.getInstance().setStage(stage);
@@ -134,7 +136,7 @@ public class App extends Application {
 	//changing schedule (cancelling apointments?)
 	//pick weekly schedule not specific dates
 	
-
+	//ignore this function, was used for testing purposes before the final product was complete
 	public static void fileTesting() throws IOException {
 		//System.out.println("here we go!");
 		File peepsFile = new File("Cophea/src/main/resources/com/cophea/people.csv");
@@ -247,7 +249,7 @@ public class App extends Application {
 		
 	}
 
-
+	//ignore this function, was used for testing purposes before the final product was complete
 	public static void scheduleTesting(){
 		Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		Patient p1 = new Patient("Ryan","F","user","pass");
@@ -263,7 +265,7 @@ public class App extends Application {
 		System.out.println(dave.getAppointments());
 		
 	}
-	
+	//ignore this function, was used for testing purposes before the final product was complete
 	public static void empTesting1() {
 		Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		//Employee dave2 = new Employee("dave2","silverman","login","pw","Doctor");
@@ -276,6 +278,7 @@ public class App extends Application {
 		dave.removeSlot(t1);
 		dave.removeSlot(t1);
 	}
+	//ignore this function, was used for testing purposes before the final product was complete
 	public static void empTesting2() {
 		Employee dave = new Employee("dave","silverman","login","pw","Doctor");
 		Patient p1 = new Patient("Ryan","F","user","pass");
@@ -285,7 +288,7 @@ public class App extends Application {
 		dave.removeAppointment(new Appointment(dave,p1,t1));
 		dave.removeAppointment(new Appointment(dave,p1,t1));
 	}
-	
+	//ignore this function, was used for testing purposes before the final product was complete
 	public static void appoTesting() {
 		Appointment a = new Appointment();
 		Patient p1 = new Patient("Ryan","F","user","pass");
@@ -301,6 +304,7 @@ public class App extends Application {
 		System.out.println(a.equals(b));
 		
 	}
+	//ignore this function, was used for testing purposes before the final product was complete
 	public static void tsTesting() {
 		
 				TimeSlot t1 = new TimeSlot(2023, 1, 1, 14);

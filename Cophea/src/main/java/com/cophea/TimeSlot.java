@@ -7,6 +7,14 @@ import java.time.ZoneOffset;
 
 public class TimeSlot implements Comparable<TimeSlot> {
 
+	//when intiailly designing the project, we intended to allow variable duration appointments (such as 15 minute or 30 minute ones)
+	//but rendering this graphically on the scheduling screen would have been too time consuming
+	// for the current iteration of the project only the start object is used because all appointments are 1 hour in duration
+
+	// each offsetdatetime obj was to be used as  start and stop time for the appointment
+
+
+	//each contains the date (month year day) and hour and minute time and even timezone of the appointment
 	private OffsetDateTime start;
 	private OffsetDateTime end;
 	
@@ -23,6 +31,9 @@ public class TimeSlot implements Comparable<TimeSlot> {
 		end = OffsetDateTime.of(year,mon,day,hstart+1,0,0,0,ZoneOffset.ofHours(-5));
 	}
 
+	//this constructor was used for when we had to quickjly create new timeslot obj's
+	//for the scheduling screen such as when the current week was incremented or we wanted to go to the next
+	//appointment time within operating hours
 	public TimeSlot(OffsetDateTime ODT){
 		start = ODT;
 		end = ODT.plusHours(1);
@@ -30,6 +41,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
 	}
 	
 	//returns duration in hours //placeholder
+	//UNUSED
 	public int duration() {
 		return 1;
 	}
@@ -94,26 +106,38 @@ public class TimeSlot implements Comparable<TimeSlot> {
 //		System.out.println(this.getStart());
 //		System.out.println(b.getStart());
 //		System.out.println(val);
+
 		//if the first timeslot occurs BEFORE the 2nd, returns -1
 		if (val) {return -1;}
 		//if the first timeslot occurs AFTER the 2nd, returns 1
 		return 1;
 	}
 
+	//returns an equavalent timeslot object that is simply 1 hour ahead in time
+	//so if you had a timeslot on 5/10/23 at 2:00pm, this function would return one with the same date at 3pm
 	public TimeSlot incHour(){
 		return new TimeSlot(this.start.plusHours(1));
 	}
 
+	//returns a timeslot that is 16 hours ahead of the current one
+	//this func is used for the last timeslot of a workday to quickly 
+	// obtain a timeslot of the first working hour of the next work day
 	public TimeSlot nextDay(){
 		return new TimeSlot(this.start.plusHours(16));
 	}
+
+	//returns a tiomeslot that is 1 week ahead
+	//used to generate the schedule screen
 	public TimeSlot nextWeek(){
 		return new TimeSlot(this.start.plusDays(7));
 	}
+	//returns a timeslot that is 1 week prior
+	//used o generate the schedule screen
 	public TimeSlot prevWeek(){
 		return new TimeSlot(this.start.minusDays(7));
 	}
 	
+	//used to check if 2 timeslots have the same day,month,year and hourly value
 	@Override
 	public boolean equals(Object o) {
 		TimeSlot b = (TimeSlot) o;
@@ -125,12 +149,13 @@ public class TimeSlot implements Comparable<TimeSlot> {
 		return true;
 	}
 	
+
 	public String toString() {
 		//temporary
 		return this.getStart().getMonthValue()+"/"+this.getStart().getDayOfMonth()+"/"+this.getStart().getYear()+
 		" "+this.getStart().getHour()+":00";
 	}
-
+	//this func is used for "writing" the timeslot to the database files
 	public String write(){
 		String y = Integer.toString(this.start.getYear());
 		String m = Integer.toString(this.start.getMonthValue());

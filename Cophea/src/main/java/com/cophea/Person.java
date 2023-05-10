@@ -3,13 +3,19 @@ package com.cophea;
 import java.util.ArrayList;
 
 public class Person {
+	//an id to identify the person
 	private String id;
+	//UNUSED- the email of the person
 	private String email;
+	//first and last name of the person
 	private String fname,lname;
+	//the login username the person uses to log into their account
 	private String login;
+	//the persons password
 	private String password;
+	//if true, the person object is a patient, otherwise they are a doctor or surgeon or nurse or etc.
 	private boolean isPatient;
-	//private a-list appointments;
+	//list of appointments the person has, includes ones that have AND have not occured yet
 	private ArrayList<Appointment> appointments;
 	public Person(String idnum,String f,String l, String login, String password,boolean isPatient) {
 		super();
@@ -74,8 +80,9 @@ public class Person {
 		return appointments;
 	}
 	
-	
+	//adds an appointment to the person's appointment arraylist
 	public void addAppointment(Appointment A) {
+		//loop through all existing apointments and check if there is a time overlap
 		for (int i=0;i<appointments.size();i++) {
 			TimeSlot ts = appointments.get(i).getSlot();
 			if (A.getSlot().equals(ts)) {
@@ -83,13 +90,15 @@ public class Person {
 				return;
 			}
 		}
-		
+		//actually adds the appointment to the person's list, then sorts it
 		appointments.add(A);
 		this.sortAppointments();
 	}
 	
+	//remove an appointment that is equavalent to one in the arraylist, if it doesnt exist it prints an error
 	public void removeAppointment(Appointment A) {
-	
+		
+
 		if (appointments.remove(A)) {
 			this.sortAppointments();
 			return;
@@ -98,10 +107,14 @@ public class Person {
 		
 	}
 	
+	//since the appointment class was made using the COmparable interface, the default sort is used to sort the appointment
+	// arraylist from early happening appointments to later occuring ones
 	private void sortAppointments() {
 		appointments.sort(null);
 	}
 	
+	//returns true if the person object being compared has the same id
+	//otherwise false
 	@Override
 	public boolean equals(Object o) {
 		Person p = (Person) o;

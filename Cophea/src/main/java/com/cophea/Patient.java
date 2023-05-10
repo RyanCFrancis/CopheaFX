@@ -3,6 +3,9 @@ package com.cophea;
 import java.util.ArrayList;
 
 public class Patient extends Person {
+
+	//UNUSUED
+	//list of diagnosis the patient has
 	private ArrayList<String> diag;
 	
 
