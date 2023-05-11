@@ -38,12 +38,19 @@ public class DataManager {
             lineValues = line.split(",");
             tempLogin = lineValues[3];
             tempPW = lineValues[4];
-
+            
             if (loginString.equals(tempLogin)&& pwString.equals(tempPW)){
                 scan.close();
                 //System.out.println("hey there u logged in");
-                return lineValues[0];
+                if (Boolean.parseBoolean(lineValues[5])){
+                    return lineValues[0];
+                }
+                else {
+                    return "emp";
+                }
+                
             }
+            
         }
         scan.close();
         return "fail";

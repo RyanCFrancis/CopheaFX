@@ -276,6 +276,7 @@ public class ScheduleController implements Initializable {
                 StageManager.getInstance().getStage().show();
             }
         }
+        StageManager.getInstance().PopupError("Error", "Please pick a time");
         
     }
     @FXML

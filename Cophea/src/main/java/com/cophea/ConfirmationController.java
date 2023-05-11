@@ -36,7 +36,7 @@ public class ConfirmationController implements Initializable {
        TimeSlot AppoTime = StageManager.getInstance().getCurrTimeSlot();
 
        txtConfirmation.setText("Your Appointment has been made!");
-       txtDescription.setText("You have an Appointment with "+"Dr:"+Doctor.getFname()+" at "+AppoTime);
+       txtDescription.setText("You have an Appointment with "+"Dr:"+Doctor.getLname()+" at "+AppoTime);
 
     }
 

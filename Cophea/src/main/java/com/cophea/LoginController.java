@@ -33,14 +33,19 @@ public class LoginController implements Initializable {
         String pw = txtPass.getText();
         String userID = DataManager.loadPersonLogin(use, pw);
         if (attempts>2){System.exit(69);}
+
+
         if (userID.equals("fail")){
             StageManager.getInstance().PopupInfo("Login Failed", "Your password and username do not match, try again");
-            
-            
+
+        }
+        else if (userID.equals("emp")){
+            StageManager.getInstance().PopupError("Sorry", "Employee Logins are not supported at this time");
         }
         else {
             //go to the menu
-            //TODO CHANGE TO ACCOMODATE BOTH LOGINS
+            //check if hte logged in user is a employee or patient and reject them if they are a employee
+
             //load in the user data from the database files
             Patient pat = DataManager.getPatient(userID);
             DataManager.loadAppts(pat);
