@@ -45,7 +45,7 @@ public class Employee extends Person {
 	public void addSlot(TimeSlot ts) {
 		//change the return to throwing an error or something later
 		if (workSlots.contains(ts)) {
-			System.out.println("Error the person has this slot already");
+			//System.out.println("Error the person has this slot already");
 			return;
 		}
 		workSlots.add(ts);
@@ -54,7 +54,7 @@ public class Employee extends Person {
 		if (workSlots.contains(ts)) {workSlots.remove(ts);return;}
 		
 		//spit out an error or something
-		System.out.println("Error that timeslot doesnt exist");
+		//System.out.println("Error that timeslot doesnt exist");
 	}
 
 	public ArrayList<TimeSlot> getSlots(){

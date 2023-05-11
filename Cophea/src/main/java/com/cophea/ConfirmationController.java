@@ -40,11 +40,12 @@ public class ConfirmationController implements Initializable {
 
     }
 
-    //incomplete, will send out email ot the user
+    //incomplete, will send out email to the user
     @FXML
     public void sendBtn() throws IOException{
+        //As of 5/10/23 the email part of the code was not sent over by Tony
         String emailString = txtEmail.getText();
-        System.out.println("Tony Time");
+        //System.out.println("Tony Time");
     }
     //exits the program
     @FXML
