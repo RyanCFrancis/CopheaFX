@@ -1,10 +1,10 @@
 id,fname,lname,login,pass,isPatient,role,conditions
-0,dog,woof,d,i,true
-1,dog,woof,dog102,ilovecats,true
-2,dog,woof,dog103,ilovecats,false,Doctor,COVID/FLU/BROKEN FOOT
-3,dog,woof,dog104,ilovecats,true
-4,dog,woof,dog105,ilovecats,true
-5,dog,woof,dog106,ilovecats,false,Doctor,COVID/FLU/BROKEN FOOT
-6,dog,woof,dog107,ilovecats,true
-7,dog,woof,dog108,ilovecats,true
-8,dog,woof,dog109,ilovecats,false,Doctor,COVID/FLU/
+0,Ryan,Francis,rf42009,onetwothree,true
+1,Omar,Osman,OmarOS123,pinkguy7684,true
+2,Tom,Bartlett,doglover07,ilovedogs,false,Doctor,Covid-19/Flu/Broken Bone/Swelling
+3,Jessica,Volk,doglover02,ilovetom,true
+4,Julia,Miner,Mikuefan1234,iheartjapan12,true
+5,Harrison,Ford,Harryboi05,Knicksfan007,false,Doctor,HIV/Diarhea/Vomiting/Sinus Infection
+6,Drew,Hitchcock,starlord42,ilovecats,true
+7,Ophelia,Trucker,Ophidraws96,ilovejasper12,true
+8,James,Kokell,bigmanjames,password1234,false,Doctor,Cancer/IBS/Eczema
