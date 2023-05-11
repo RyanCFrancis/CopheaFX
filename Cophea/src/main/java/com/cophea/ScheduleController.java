@@ -334,7 +334,7 @@ public class ScheduleController implements Initializable {
             //unselect any buttons if they are selected already
             //this is necessary when changing the week you are viewing
             buttons[i].setSelected(false);
-            buttons[i].setText("BUSY1");
+            buttons[i].setText("Busy");
             buttons[i].setDisable(true);
         }
 
@@ -384,7 +384,7 @@ public class ScheduleController implements Initializable {
                 //System.out.print(activeApps.get(q).getSlot()+" "+TS.toString());
                 if (activeApps.get(q).getSlot().equals(TS)){
                    //System.out.println("true");
-                   buttons[i].setText("BUSY");
+                   buttons[i].setText("Busy");
                    buttons[i].setDisable(true);
                 }
             }
