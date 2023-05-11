@@ -359,7 +359,7 @@ public class ScheduleController implements Initializable {
         int i=0;
         while (i<45){ 
 
-            //TODO change loop to go through currslots and check appoints and working in 1 loop rather than multiple
+            
 
            //loop through working hours of the employee
            

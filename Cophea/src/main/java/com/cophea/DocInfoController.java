@@ -3,6 +3,7 @@ package com.cophea;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -59,7 +60,9 @@ public class DocInfoController implements Initializable {
                     
                 }
                 else {
-                    if (!availAppts.contains(currTimeSlot)){
+                    TimeSlot today = new TimeSlot(OffsetDateTime.now());
+                    //if the timeslot does not already exist and hasnt occurred yet, add to the possible options
+                    if ((!availAppts.contains(currTimeSlot))&& (today.compareTo(currTimeSlot)==-1)){
                         availAppts.add(currTimeSlot);
                     }
                     
@@ -82,7 +85,7 @@ public class DocInfoController implements Initializable {
         //lblDoctor.setText(Integer.toString(availAppts.size()));
     }
 
-    //TODO if no apps, say u have none
+    
     @FXML
     public void goBack() throws IOException{
        StageManager.getInstance().goToPickDoctor(false);
