@@ -258,11 +258,12 @@ public class ScheduleController implements Initializable {
 
     @FXML
     public void continuebtn() throws IOException{
-   
+        boolean timePicked = false;
         for (int z=0;z<buttons.length;z++){
            // System.out.println(z+" "+buttons[z].isSelected());
             if(buttons[z].isSelected()){
                 TimeSlot pickedSlot = currentSlots[z];
+                timePicked = true;
                 Appointment added = new Appointment(currEmployee,(Patient) StageManager.getInstance().getUser(), pickedSlot);
                 DataManager.writeAppointment(currEmployee, added);
 
@@ -276,7 +277,10 @@ public class ScheduleController implements Initializable {
                 StageManager.getInstance().getStage().show();
             }
         }
-        StageManager.getInstance().PopupError("Error", "Please pick a time");
+        if (!timePicked){
+            StageManager.getInstance().PopupError("Error", "Please pick a time");
+        }
+        
         
     }
     @FXML

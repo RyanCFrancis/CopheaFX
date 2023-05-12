@@ -179,7 +179,7 @@ public class StageManager {
     }
     //function to streamline making popups on the screen    
     public void PopupInfo(String title,String content){
-        Alert a = new Alert(AlertType.ERROR);
+        Alert a = new Alert(AlertType.INFORMATION);
         a.setTitle(title);
         a.setContentText(content);
         a.show();

@@ -34,10 +34,8 @@ public class LoginController implements Initializable {
         String userID = DataManager.loadPersonLogin(use, pw);
         if (attempts>2){System.exit(69);}
 
-
         if (userID.equals("fail")){
-            StageManager.getInstance().PopupInfo("Login Failed", "Your password and username do not match, try again");
-
+            StageManager.getInstance().PopupInfo("Login Failed","Your password and username do not match, try again");
         }
         else if (userID.equals("emp")){
             StageManager.getInstance().PopupError("Sorry", "Employee Logins are not supported at this time");
